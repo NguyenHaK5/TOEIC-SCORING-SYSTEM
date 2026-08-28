@@ -1,0 +1,17 @@
+## .NET
+backend/**/bin/
+backend/**/obj/
+*.user
+
+## Node / Next.js (frontend sẽ thêm ở phase sau)
+frontend/node_modules/
+frontend/.next/
+
+## Python (evaluation-service sẽ thêm ở phase sau)
+evaluation-service/__pycache__/
+evaluation-service/.venv/
+
+## OS / Editor
+.DS_Store
+.vscode/
+.idea/
