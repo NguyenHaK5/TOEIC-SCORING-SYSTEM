@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Toeic.Application.ExamTaking;
 using Toeic.Application.ExamTaking.Dtos;
+using Toeic.Application.ObjectiveScoring;
 using Toeic.Domain.Enums;
 
 namespace Toeic.Api.Controllers;
@@ -17,10 +18,12 @@ namespace Toeic.Api.Controllers;
 public class ExamSessionsController : ApiControllerBase
 {
     private readonly IExamSessionService _examSessionService;
+    private readonly IObjectiveScoringService _objectiveScoringService;
 
-    public ExamSessionsController(IExamSessionService examSessionService)
+    public ExamSessionsController(IExamSessionService examSessionService, IObjectiveScoringService objectiveScoringService)
     {
         _examSessionService = examSessionService;
+        _objectiveScoringService = objectiveScoringService;
     }
 
     /// <summary>Bắt đầu (hoặc resume nếu đã có phiên đang diễn ra) 1 phiên thi cho Exam đang ONGOING.</summary>
@@ -65,5 +68,15 @@ public class ExamSessionsController : ApiControllerBase
     {
         var session = await _examSessionService.SubmitAsync(sessionId, CurrentUserId, ct);
         return Ok(session);
+    }
+
+    /// <summary>Lấy kết quả điểm số Listening/Reading sau khi nộp bài.</summary>
+    [HttpGet("{sessionId:guid}/result")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetResult(Guid sessionId, CancellationToken ct)
+    {
+        // Dùng CurrentUserId có sẵn từ ApiControllerBase
+        var result = await _objectiveScoringService.GetResultAsync(sessionId, CurrentUserId, ct);
+        return Ok(result);
     }
 }

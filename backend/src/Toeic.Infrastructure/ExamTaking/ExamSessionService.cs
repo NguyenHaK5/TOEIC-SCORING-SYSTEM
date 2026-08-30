@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Toeic.Application.Common.Exceptions;
 using Toeic.Application.ExamTaking;
 using Toeic.Application.ExamTaking.Dtos;
+using Toeic.Application.ObjectiveScoring;
 using Toeic.Domain.Entities;
 using Toeic.Domain.Enums;
 using Toeic.Infrastructure.Persistence;
@@ -13,13 +14,18 @@ namespace Toeic.Infrastructure.ExamTaking;
 /// (mục 16, prompt gốc) — server luôn là nguồn xác thực thời gian cuối cùng, KHÔNG dựa vào
 /// đồng hồ Frontend.
 /// </summary>
+
 public class ExamSessionService : IExamSessionService
 {
     private readonly AppDbContext _db;
 
-    public ExamSessionService(AppDbContext db)
+    // Tiêm dependency vào ExamSessionService
+    private readonly IObjectiveScoringService _objectiveScoringService;
+
+    public ExamSessionService(AppDbContext db, IObjectiveScoringService objectiveScoringService)
     {
         _db = db;
+        _objectiveScoringService = objectiveScoringService;
     }
 
     public async Task<ExamSessionDto> StartAsync(Guid candidateUserId, StartExamSessionRequest request, CancellationToken ct = default)
@@ -249,6 +255,9 @@ public class ExamSessionService : IExamSessionService
         {
             throw new ConflictAppException("Phiên thi vừa được cập nhật từ nơi khác. Vui lòng tải lại trang và thử lại.");
         }
+
+        // THÊM DÒNG NÀY: Kích hoạt chấm điểm tự động (Phase 2) ngay khi nộp bài thành công
+        await _objectiveScoringService.ScoreSessionAsync(session.Id, ct);
 
         return ToDto(session);
     }

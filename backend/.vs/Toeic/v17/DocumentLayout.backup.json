@@ -3,28 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0A22D11A-EFFB-4318-8801-B4278C05F0F4}|src\\Toeic.Application\\Toeic.Application.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.application\\exammanagement\\dtos\\questiondtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0A22D11A-EFFB-4318-8801-B4278C05F0F4}|src\\Toeic.Application\\Toeic.Application.csproj|solutionrelative:src\\toeic.application\\exammanagement\\dtos\\questiondtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{894A9A0A-6BE0-4403-BE1D-A902F79AB212}|src\\Toeic.Api\\Toeic.Api.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.api\\controllers\\examsessionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{894A9A0A-6BE0-4403-BE1D-A902F79AB212}|src\\Toeic.Api\\Toeic.Api.csproj|solutionrelative:src\\toeic.api\\controllers\\examsessionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0A22D11A-EFFB-4318-8801-B4278C05F0F4}|src\\Toeic.Application\\Toeic.Application.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.application\\common\\dtos\\pagedresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0A22D11A-EFFB-4318-8801-B4278C05F0F4}|src\\Toeic.Application\\Toeic.Application.csproj|solutionrelative:src\\toeic.application\\common\\dtos\\pagedresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{175E95C2-2DC3-4611-9F7B-45C3295463D3}|src\\Toeic.Infrastructure\\Toeic.Infrastructure.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.infrastructure\\objectivescoring\\objectivescoringservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{175E95C2-2DC3-4611-9F7B-45C3295463D3}|src\\Toeic.Infrastructure\\Toeic.Infrastructure.csproj|solutionrelative:src\\toeic.infrastructure\\objectivescoring\\objectivescoringservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{146C3C3B-EC03-420E-A535-CBF1150BAE9A}|src\\Toeic.Domain\\Toeic.Domain.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.domain\\entities\\questionoption.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{146C3C3B-EC03-420E-A535-CBF1150BAE9A}|src\\Toeic.Domain\\Toeic.Domain.csproj|solutionrelative:src\\toeic.domain\\entities\\questionoption.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{175E95C2-2DC3-4611-9F7B-45C3295463D3}|src\\Toeic.Infrastructure\\Toeic.Infrastructure.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{175E95C2-2DC3-4611-9F7B-45C3295463D3}|src\\Toeic.Infrastructure\\Toeic.Infrastructure.csproj|solutionrelative:src\\toeic.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{894A9A0A-6BE0-4403-BE1D-A902F79AB212}|src\\Toeic.Api\\Toeic.Api.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{894A9A0A-6BE0-4403-BE1D-A902F79AB212}|src\\Toeic.Api\\Toeic.Api.csproj|solutionrelative:src\\toeic.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{146C3C3B-EC03-420E-A535-CBF1150BAE9A}|src\\Toeic.Domain\\Toeic.Domain.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.domain\\scoring\\objectivescoringengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{146C3C3B-EC03-420E-A535-CBF1150BAE9A}|src\\Toeic.Domain\\Toeic.Domain.csproj|solutionrelative:src\\toeic.domain\\scoring\\objectivescoringengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{175E95C2-2DC3-4611-9F7B-45C3295463D3}|src\\Toeic.Infrastructure\\Toeic.Infrastructure.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.infrastructure\\security\\jwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{175E95C2-2DC3-4611-9F7B-45C3295463D3}|src\\Toeic.Infrastructure\\Toeic.Infrastructure.csproj|solutionrelative:src\\toeic.infrastructure\\security\\jwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{175E95C2-2DC3-4611-9F7B-45C3295463D3}|src\\Toeic.Infrastructure\\Toeic.Infrastructure.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.infrastructure\\examtaking\\examsessionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{175E95C2-2DC3-4611-9F7B-45C3295463D3}|src\\Toeic.Infrastructure\\Toeic.Infrastructure.csproj|solutionrelative:src\\toeic.infrastructure\\examtaking\\examsessionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{894A9A0A-6BE0-4403-BE1D-A902F79AB212}|src\\Toeic.Api\\Toeic.Api.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{894A9A0A-6BE0-4403-BE1D-A902F79AB212}|src\\Toeic.Api\\Toeic.Api.csproj|solutionrelative:src\\toeic.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{146C3C3B-EC03-420E-A535-CBF1150BAE9A}|src\\Toeic.Domain\\Toeic.Domain.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.domain\\enums\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{146C3C3B-EC03-420E-A535-CBF1150BAE9A}|src\\Toeic.Domain\\Toeic.Domain.csproj|solutionrelative:src\\toeic.domain\\enums\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A22D11A-EFFB-4318-8801-B4278C05F0F4}|src\\Toeic.Application\\Toeic.Application.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.application\\common\\exceptions\\appexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A22D11A-EFFB-4318-8801-B4278C05F0F4}|src\\Toeic.Application\\Toeic.Application.csproj|solutionrelative:src\\toeic.application\\common\\exceptions\\appexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -43,80 +47,88 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "QuestionDtos.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Application\\ExamManagement\\Dtos\\QuestionDtos.cs",
-              "RelativeDocumentMoniker": "src\\Toeic.Application\\ExamManagement\\Dtos\\QuestionDtos.cs",
-              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Application\\ExamManagement\\Dtos\\QuestionDtos.cs",
-              "RelativeToolTip": "src\\Toeic.Application\\ExamManagement\\Dtos\\QuestionDtos.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAAADkAAAAOAAAAAAAAAA==",
+              "Title": "ExamSessionsController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Api\\Controllers\\ExamSessionsController.cs",
+              "RelativeDocumentMoniker": "src\\Toeic.Api\\Controllers\\ExamSessionsController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Api\\Controllers\\ExamSessionsController.cs",
+              "RelativeToolTip": "src\\Toeic.Api\\Controllers\\ExamSessionsController.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAYwFAAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-28T13:50:30.653Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PagedResult.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Application\\Common\\Dtos\\PagedResult.cs",
-              "RelativeDocumentMoniker": "src\\Toeic.Application\\Common\\Dtos\\PagedResult.cs",
-              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Application\\Common\\Dtos\\PagedResult.cs",
-              "RelativeToolTip": "src\\Toeic.Application\\Common\\Dtos\\PagedResult.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-28T13:50:22.196Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "QuestionOption.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Domain\\Entities\\QuestionOption.cs",
-              "RelativeDocumentMoniker": "src\\Toeic.Domain\\Entities\\QuestionOption.cs",
-              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Domain\\Entities\\QuestionOption.cs",
-              "RelativeToolTip": "src\\Toeic.Domain\\Entities\\QuestionOption.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAA3wAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-28T13:50:01.308Z",
+              "WhenOpened": "2026-08-29T10:59:20.668Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "appsettings.Development.json",
-              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Api\\appsettings.Development.json",
-              "RelativeDocumentMoniker": "src\\Toeic.Api\\appsettings.Development.json",
-              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Api\\appsettings.Development.json",
-              "RelativeToolTip": "src\\Toeic.Api\\appsettings.Development.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-08-28T13:24:46.159Z",
-              "EditorCaption": ""
+              "Title": "Enums.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Domain\\Enums\\Enums.cs",
+              "RelativeDocumentMoniker": "src\\Toeic.Domain\\Enums\\Enums.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Domain\\Enums\\Enums.cs",
+              "RelativeToolTip": "src\\Toeic.Domain\\Enums\\Enums.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAowDYAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-29T09:48:45.938Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Api\\Program.cs",
-              "RelativeDocumentMoniker": "src\\Toeic.Api\\Program.cs",
-              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Api\\Program.cs",
-              "RelativeToolTip": "src\\Toeic.Api\\Program.cs",
-              "ViewState": "AgIAADoAAAAAAAAAAAASwEIAAAAnAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "AppException.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Application\\Common\\Exceptions\\AppException.cs",
+              "RelativeDocumentMoniker": "src\\Toeic.Application\\Common\\Exceptions\\AppException.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Application\\Common\\Exceptions\\AppException.cs",
+              "RelativeToolTip": "src\\Toeic.Application\\Common\\Exceptions\\AppException.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAA6wDcAAABtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-28T13:10:58.411Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-29T09:45:42.656Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "JwtTokenService.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Infrastructure\\Security\\JwtTokenService.cs",
-              "RelativeDocumentMoniker": "src\\Toeic.Infrastructure\\Security\\JwtTokenService.cs",
-              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Infrastructure\\Security\\JwtTokenService.cs",
-              "RelativeToolTip": "src\\Toeic.Infrastructure\\Security\\JwtTokenService.cs",
-              "ViewState": "AgIAADkAAAAAAAAAAAAmwCcAAAAuAAAAAAAAAA==",
+              "Title": "ExamSessionService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Infrastructure\\ExamTaking\\ExamSessionService.cs",
+              "RelativeDocumentMoniker": "src\\Toeic.Infrastructure\\ExamTaking\\ExamSessionService.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Infrastructure\\ExamTaking\\ExamSessionService.cs",
+              "RelativeToolTip": "src\\Toeic.Infrastructure\\ExamTaking\\ExamSessionService.cs",
+              "ViewState": "AgIAAOkAAAAAAAAAAAAswAMBAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-28T13:07:39.082Z",
+              "WhenOpened": "2026-08-29T09:30:11.485Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ObjectiveScoringService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Infrastructure\\ObjectiveScoring\\ObjectiveScoringService.cs",
+              "RelativeDocumentMoniker": "src\\Toeic.Infrastructure\\ObjectiveScoring\\ObjectiveScoringService.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Infrastructure\\ObjectiveScoring\\ObjectiveScoringService.cs",
+              "RelativeToolTip": "src\\Toeic.Infrastructure\\ObjectiveScoring\\ObjectiveScoringService.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAAAE4AAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-29T09:25:53.757Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Infrastructure\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "src\\Toeic.Infrastructure\\DependencyInjection.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Infrastructure\\DependencyInjection.cs",
+              "RelativeToolTip": "src\\Toeic.Infrastructure\\DependencyInjection.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAAwCwAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-29T09:28:33.75Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ObjectiveScoringEngine.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Domain\\Scoring\\ObjectiveScoringEngine.cs",
+              "RelativeDocumentMoniker": "src\\Toeic.Domain\\Scoring\\ObjectiveScoringEngine.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Domain\\Scoring\\ObjectiveScoringEngine.cs",
+              "RelativeToolTip": "src\\Toeic.Domain\\Scoring\\ObjectiveScoringEngine.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAYwDQAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-29T09:25:43.472Z"
             }
           ]
         }

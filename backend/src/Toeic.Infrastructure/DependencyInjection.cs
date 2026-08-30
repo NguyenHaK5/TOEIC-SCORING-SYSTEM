@@ -5,9 +5,11 @@ using Toeic.Application.Auth;
 using Toeic.Application.Common.Interfaces;
 using Toeic.Application.ExamManagement;
 using Toeic.Application.ExamTaking;
+using Toeic.Application.ObjectiveScoring;
 using Toeic.Infrastructure.Auth;
 using Toeic.Infrastructure.ExamManagement;
 using Toeic.Infrastructure.ExamTaking;
+using Toeic.Infrastructure.ObjectiveScoring;
 using Toeic.Infrastructure.Persistence;
 using Toeic.Infrastructure.Security;
 
@@ -36,6 +38,9 @@ public static class DependencyInjection
         services.AddScoped<ITestService, TestService>();
         services.AddScoped<IQuestionService, QuestionService>();
         services.AddScoped<IExamSessionService, ExamSessionService>();
+
+        // ... trong AddInfrastructure(...) hoặc tương đương:
+        services.AddScoped<IObjectiveScoringService, ObjectiveScoringService>();
 
         return services;
     }

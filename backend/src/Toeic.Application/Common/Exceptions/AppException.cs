@@ -9,6 +9,8 @@ public abstract class AppException : Exception
 {
     public abstract int StatusCode { get; }
     protected AppException(string message) : base(message) { }
+
+    protected AppException(string message, Exception innerException) : base(message, innerException) { }
 }
 
 /// <summary>400 — input không hợp lệ hoặc vi phạm business rule đơn giản.</summary>
@@ -50,4 +52,6 @@ public class ConflictAppException : AppException
 {
     public override int StatusCode => 409;
     public ConflictAppException(string message) : base(message) { }
+
+    public ConflictAppException(string message, Exception innerException) : base(message, innerException) { }
 }
