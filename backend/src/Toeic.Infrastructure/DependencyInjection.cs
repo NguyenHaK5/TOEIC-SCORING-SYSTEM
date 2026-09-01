@@ -1,17 +1,22 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Toeic.Application.Auth;
 using Toeic.Application.Common.Interfaces;
 using Toeic.Application.ExamManagement;
 using Toeic.Application.ExamTaking;
 using Toeic.Application.ObjectiveScoring;
+using Toeic.Application.RubricManagement;
+using Toeic.Application.WritingAssessment;
 using Toeic.Infrastructure.Auth;
 using Toeic.Infrastructure.ExamManagement;
 using Toeic.Infrastructure.ExamTaking;
 using Toeic.Infrastructure.ObjectiveScoring;
 using Toeic.Infrastructure.Persistence;
+using Toeic.Infrastructure.RubricManagement;
 using Toeic.Infrastructure.Security;
+using Toeic.Infrastructure.WritingAssessment;
 
 namespace Toeic.Infrastructure;
 
@@ -41,6 +46,37 @@ public static class DependencyInjection
 
         // ... trong AddInfrastructure(...) hoặc tương đương:
         services.AddScoped<IObjectiveScoringService, ObjectiveScoringService>();
+        services.AddScoped<IRubricService, RubricService>();
+
+        services.Configure<AiAssessmentOptions>(configuration.GetSection("AiAssessment"));
+        services.AddScoped<IPromptBuilder, PromptBuilder>();
+
+
+        //// Phần đăng ký cho Anthropic:
+        //services.AddHttpClient<ILlmProvider, AnthropicLlmProvider>((sp, client) =>
+        //{
+        //    var opts = sp.GetRequiredService<IOptions<AiAssessmentOptions>>().Value;
+        //    client.BaseAddress = new Uri(string.IsNullOrWhiteSpace(opts.BaseUrl)
+        //        ? "https://api.anthropic.com"
+        //        : opts.BaseUrl);
+        //});
+
+        // Phần đăng ký cho Gemini:
+        services.AddHttpClient<ILlmProvider, GeminiLlmProvider>((sp, client) =>
+        {
+            var opts = sp.GetRequiredService<IOptions<AiAssessmentOptions>>().Value;
+            // URL gốc của Google Gemini
+            client.BaseAddress = new Uri(string.IsNullOrWhiteSpace(opts.BaseUrl)
+                ? "https://generativelanguage.googleapis.com"
+                : opts.BaseUrl);
+        });
+
+        services.AddScoped<IAiAssessmentService, AiAssessmentService>();
+
+        // Đăng ký Queue dưới dạng Singleton là BẮT BUỘC để chia sẻ luồng dữ liệu
+        services.AddSingleton<IWritingAssessmentQueue, InMemoryWritingAssessmentQueue>();
+        services.AddHostedService<WritingAssessmentBackgroundWorker>();
+        services.AddScoped<IWritingResultService, WritingResultService>();
 
         return services;
     }

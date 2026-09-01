@@ -18,7 +18,7 @@ public class AppDbContext : DbContext
     public DbSet<CandidateAnswer> CandidateAnswers => Set<CandidateAnswer>();
     public DbSet<RubricSet> RubricSets => Set<RubricSet>();
     public DbSet<Rubric> Rubrics => Set<Rubric>();
-    public DbSet<WritingAssessment> WritingAssessments => Set<WritingAssessment>();
+    public DbSet<Toeic.Domain.Entities.WritingAssessment> WritingAssessments => Set<Toeic.Domain.Entities.WritingAssessment>();
     public DbSet<HumanAssessment> HumanAssessments => Set<HumanAssessment>();
     public DbSet<AssessmentCriterionScore> AssessmentCriterionScores => Set<AssessmentCriterionScore>();
     public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();

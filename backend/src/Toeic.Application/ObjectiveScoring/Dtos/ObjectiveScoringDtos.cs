@@ -1,4 +1,4 @@
-using System;
+using Toeic.Application.WritingAssessment.Dtos;
 
 namespace Toeic.Application.ObjectiveScoring.Dtos;
 
@@ -31,4 +31,7 @@ public sealed record ExamSessionResultDto(
     int ReadingCorrectCount,
     int ReadingTotalCount,
     decimal? WritingScore,
-    decimal? TotalScore);
+    decimal? TotalScore,
+
+
+    WritingSectionResultDto? Writing = null);

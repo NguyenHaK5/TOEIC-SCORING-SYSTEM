@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
 using Toeic.Domain.Entities;
 using Toeic.Domain.Scoring;
-using Xunit;
 
 namespace Toeic.UnitTests.ObjectiveScoring;
 
@@ -10,7 +7,7 @@ public class ObjectiveScoringEngineTests
 {
     private static QuestionOption Option(Guid id, bool isCorrect) => new()
     {
-        QuestionOptionId = id,
+        Id = id,
         QuestionId = Guid.NewGuid(),
         OptionLabel = isCorrect ? 'A' : 'B',
         OptionText = "text",

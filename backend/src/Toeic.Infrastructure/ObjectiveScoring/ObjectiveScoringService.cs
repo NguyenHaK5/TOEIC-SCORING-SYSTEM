@@ -22,10 +22,12 @@ public sealed class ObjectiveScoringService : IObjectiveScoringService
     };
 
     private readonly AppDbContext _db;
+    private readonly Toeic.Application.WritingAssessment.IWritingResultService _writingResultService;
 
-    public ObjectiveScoringService(AppDbContext db)
+    public ObjectiveScoringService(AppDbContext db, Application.WritingAssessment.IWritingResultService writingResultService)
     {
         _db = db;
+        _writingResultService = writingResultService;
     }
 
     public async Task<ObjectiveScoringSummaryDto> ScoreSessionAsync(Guid examSessionId, CancellationToken ct = default)
@@ -158,6 +160,12 @@ public sealed class ObjectiveScoringService : IObjectiveScoringService
             ? await BuildSummaryFromExistingAsync(session, ct)
             : await ScoreSessionAsync(examSessionId, ct); // lazy scoring — xem ghi chú ở interface
 
+
+        var writingResult = session.Status == ExamSessionStatus.SUBMITTED
+            ? await _writingResultService.GetSectionResultAsync(examSessionId, ct)
+            : new Toeic.Application.WritingAssessment.Dtos.WritingSectionResultDto();
+
+
         return new ExamSessionResultDto(
             session.Id,
             session.Status.ToString(),
@@ -169,7 +177,9 @@ public sealed class ObjectiveScoringService : IObjectiveScoringService
             summary.ReadingCorrectCount,
             summary.ReadingTotalCount,
             session.WritingScore,
-            session.TotalScore);
+            session.TotalScore,
+
+            writingResult);
     }
 
     /// <summary>

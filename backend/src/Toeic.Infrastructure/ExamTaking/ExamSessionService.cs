@@ -3,6 +3,7 @@ using Toeic.Application.Common.Exceptions;
 using Toeic.Application.ExamTaking;
 using Toeic.Application.ExamTaking.Dtos;
 using Toeic.Application.ObjectiveScoring;
+using Toeic.Application.WritingAssessment;
 using Toeic.Domain.Entities;
 using Toeic.Domain.Enums;
 using Toeic.Infrastructure.Persistence;
@@ -22,10 +23,15 @@ public class ExamSessionService : IExamSessionService
     // Tiêm dependency vào ExamSessionService
     private readonly IObjectiveScoringService _objectiveScoringService;
 
-    public ExamSessionService(AppDbContext db, IObjectiveScoringService objectiveScoringService)
+    private readonly IWritingAssessmentQueue _writingAssessmentQueue;
+    private readonly IWritingResultService _writingResultService;
+
+    public ExamSessionService(AppDbContext db, IObjectiveScoringService objectiveScoringService, IWritingAssessmentQueue writingAssessmentQueue, IWritingResultService writingResultService)
     {
         _db = db;
         _objectiveScoringService = objectiveScoringService;
+        _writingAssessmentQueue = writingAssessmentQueue;
+        _writingResultService = writingResultService;
     }
 
     public async Task<ExamSessionDto> StartAsync(Guid candidateUserId, StartExamSessionRequest request, CancellationToken ct = default)
@@ -258,6 +264,8 @@ public class ExamSessionService : IExamSessionService
 
         // THÊM DÒNG NÀY: Kích hoạt chấm điểm tự động (Phase 2) ngay khi nộp bài thành công
         await _objectiveScoringService.ScoreSessionAsync(session.Id, ct);
+
+        await _writingAssessmentQueue.EnqueueAsync(new WritingAssessmentJob(session.Id), ct);
 
         return ToDto(session);
     }

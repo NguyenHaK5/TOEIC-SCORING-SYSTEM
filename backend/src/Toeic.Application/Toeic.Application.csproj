@@ -11,4 +11,8 @@
     <ProjectReference Include="..\Toeic.Domain\Toeic.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
+  </ItemGroup>
+
 </Project>

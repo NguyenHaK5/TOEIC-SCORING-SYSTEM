@@ -8,9 +8,9 @@ namespace Toeic.Infrastructure.Persistence.Configurations;
 /// ISSUE-02: quan hệ 1:N với CandidateAnswer (chấm lại tạo dòng mới, KHÔNG update dòng cũ).
 /// Partial unique index đảm bảo chỉ có đúng 1 bản IsCurrent = TRUE cho mỗi CandidateAnswer.
 /// </summary>
-public class WritingAssessmentConfiguration : IEntityTypeConfiguration<WritingAssessment>
+public class WritingAssessmentConfiguration : IEntityTypeConfiguration<Toeic.Domain.Entities.WritingAssessment>
 {
-    public void Configure(EntityTypeBuilder<WritingAssessment> builder)
+    public void Configure(EntityTypeBuilder<Toeic.Domain.Entities.WritingAssessment> builder)
     {
         builder.ToTable("WritingAssessments");
         builder.HasKey(w => w.Id);
