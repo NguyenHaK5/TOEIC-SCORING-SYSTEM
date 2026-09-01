@@ -1,7 +1,48 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{175E95C2-2DC3-4611-9F7B-45C3295463D3}|src\\Toeic.Infrastructure\\Toeic.Infrastructure.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.infrastructure\\writingassessment\\writingresultservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{175E95C2-2DC3-4611-9F7B-45C3295463D3}|src\\Toeic.Infrastructure\\Toeic.Infrastructure.csproj|solutionrelative:src\\toeic.infrastructure\\writingassessment\\writingresultservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{175E95C2-2DC3-4611-9F7B-45C3295463D3}|src\\Toeic.Infrastructure\\Toeic.Infrastructure.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.infrastructure\\objectivescoring\\objectivescoringservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{175E95C2-2DC3-4611-9F7B-45C3295463D3}|src\\Toeic.Infrastructure\\Toeic.Infrastructure.csproj|solutionrelative:src\\toeic.infrastructure\\objectivescoring\\objectivescoringservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{175E95C2-2DC3-4611-9F7B-45C3295463D3}|src\\Toeic.Infrastructure\\Toeic.Infrastructure.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.infrastructure\\scoring\\writingscoreresolver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{175E95C2-2DC3-4611-9F7B-45C3295463D3}|src\\Toeic.Infrastructure\\Toeic.Infrastructure.csproj|solutionrelative:src\\toeic.infrastructure\\scoring\\writingscoreresolver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{175E95C2-2DC3-4611-9F7B-45C3295463D3}|src\\Toeic.Infrastructure\\Toeic.Infrastructure.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.infrastructure\\exammanagement\\examservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{175E95C2-2DC3-4611-9F7B-45C3295463D3}|src\\Toeic.Infrastructure\\Toeic.Infrastructure.csproj|solutionrelative:src\\toeic.infrastructure\\exammanagement\\examservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{894A9A0A-6BE0-4403-BE1D-A902F79AB212}|src\\Toeic.Api\\Toeic.Api.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.api\\controllers\\humanratingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{894A9A0A-6BE0-4403-BE1D-A902F79AB212}|src\\Toeic.Api\\Toeic.Api.csproj|solutionrelative:src\\toeic.api\\controllers\\humanratingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{175E95C2-2DC3-4611-9F7B-45C3295463D3}|src\\Toeic.Infrastructure\\Toeic.Infrastructure.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.infrastructure\\humanrating\\humanratingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{175E95C2-2DC3-4611-9F7B-45C3295463D3}|src\\Toeic.Infrastructure\\Toeic.Infrastructure.csproj|solutionrelative:src\\toeic.infrastructure\\humanrating\\humanratingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A22D11A-EFFB-4318-8801-B4278C05F0F4}|src\\Toeic.Application\\Toeic.Application.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.application\\humanrating\\ihumanratingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A22D11A-EFFB-4318-8801-B4278C05F0F4}|src\\Toeic.Application\\Toeic.Application.csproj|solutionrelative:src\\toeic.application\\humanrating\\ihumanratingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{175E95C2-2DC3-4611-9F7B-45C3295463D3}|src\\Toeic.Infrastructure\\Toeic.Infrastructure.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{175E95C2-2DC3-4611-9F7B-45C3295463D3}|src\\Toeic.Infrastructure\\Toeic.Infrastructure.csproj|solutionrelative:src\\toeic.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A22D11A-EFFB-4318-8801-B4278C05F0F4}|src\\Toeic.Application\\Toeic.Application.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.application\\humanrating\\dtos\\aihumancomparisondtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A22D11A-EFFB-4318-8801-B4278C05F0F4}|src\\Toeic.Application\\Toeic.Application.csproj|solutionrelative:src\\toeic.application\\humanrating\\dtos\\aihumancomparisondtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A22D11A-EFFB-4318-8801-B4278C05F0F4}|src\\Toeic.Application\\Toeic.Application.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.application\\scoring\\iwritingscoreresolver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A22D11A-EFFB-4318-8801-B4278C05F0F4}|src\\Toeic.Application\\Toeic.Application.csproj|solutionrelative:src\\toeic.application\\scoring\\iwritingscoreresolver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -9,11 +50,141 @@
       "DocumentGroups": [
         {
           "DockedHeight": 303,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "WritingResultService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Infrastructure\\WritingAssessment\\WritingResultService.cs",
+              "RelativeDocumentMoniker": "src\\Toeic.Infrastructure\\WritingAssessment\\WritingResultService.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Infrastructure\\WritingAssessment\\WritingResultService.cs",
+              "RelativeToolTip": "src\\Toeic.Infrastructure\\WritingAssessment\\WritingResultService.cs",
+              "ViewState": "AgIAANMAAAAAAAAAAAAowJMAAABdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-01T11:31:30.375Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ObjectiveScoringService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Infrastructure\\ObjectiveScoring\\ObjectiveScoringService.cs",
+              "RelativeDocumentMoniker": "src\\Toeic.Infrastructure\\ObjectiveScoring\\ObjectiveScoringService.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Infrastructure\\ObjectiveScoring\\ObjectiveScoringService.cs",
+              "RelativeToolTip": "src\\Toeic.Infrastructure\\ObjectiveScoring\\ObjectiveScoringService.cs",
+              "ViewState": "AgIAAJwAAAAAAAAAAAAYwLEAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-01T11:22:53.972Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ExamService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Infrastructure\\ExamManagement\\ExamService.cs",
+              "RelativeDocumentMoniker": "src\\Toeic.Infrastructure\\ExamManagement\\ExamService.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Infrastructure\\ExamManagement\\ExamService.cs",
+              "RelativeToolTip": "src\\Toeic.Infrastructure\\ExamManagement\\ExamService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-01T11:22:39.909Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "HumanRatingController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Api\\Controllers\\HumanRatingController.cs",
+              "RelativeDocumentMoniker": "src\\Toeic.Api\\Controllers\\HumanRatingController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Api\\Controllers\\HumanRatingController.cs",
+              "RelativeToolTip": "src\\Toeic.Api\\Controllers\\HumanRatingController.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAA5wEYAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-01T11:19:37.613Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IHumanRatingService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Application\\HumanRating\\IHumanRatingService.cs",
+              "RelativeDocumentMoniker": "src\\Toeic.Application\\HumanRating\\IHumanRatingService.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Application\\HumanRating\\IHumanRatingService.cs",
+              "RelativeToolTip": "src\\Toeic.Application\\HumanRating\\IHumanRatingService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAxwCAAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-01T11:15:52.821Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:1390786666:0:{83107a3e-496a-485e-b455-16ddb978e55e}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "HumanRatingService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Infrastructure\\HumanRating\\HumanRatingService.cs",
+              "RelativeDocumentMoniker": "src\\Toeic.Infrastructure\\HumanRating\\HumanRatingService.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Infrastructure\\HumanRating\\HumanRatingService.cs",
+              "RelativeToolTip": "src\\Toeic.Infrastructure\\HumanRating\\HumanRatingService.cs",
+              "ViewState": "AgIAAJgBAAAAAAAAAAAkwI8BAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-01T11:15:49.702Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "WritingScoreResolver.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Infrastructure\\Scoring\\WritingScoreResolver.cs",
+              "RelativeDocumentMoniker": "src\\Toeic.Infrastructure\\Scoring\\WritingScoreResolver.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Infrastructure\\Scoring\\WritingScoreResolver.cs",
+              "RelativeToolTip": "src\\Toeic.Infrastructure\\Scoring\\WritingScoreResolver.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAgwEIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-01T11:11:15.254Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Infrastructure\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "src\\Toeic.Infrastructure\\DependencyInjection.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Infrastructure\\DependencyInjection.cs",
+              "RelativeToolTip": "src\\Toeic.Infrastructure\\DependencyInjection.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAAFcAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-01T11:14:33.613Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IWritingScoreResolver.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Application\\Scoring\\IWritingScoreResolver.cs",
+              "RelativeDocumentMoniker": "src\\Toeic.Application\\Scoring\\IWritingScoreResolver.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Application\\Scoring\\IWritingScoreResolver.cs",
+              "RelativeToolTip": "src\\Toeic.Application\\Scoring\\IWritingScoreResolver.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-01T11:11:13.237Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AiHumanComparisonDtos.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Application\\HumanRating\\Dtos\\AiHumanComparisonDtos.cs",
+              "RelativeDocumentMoniker": "src\\Toeic.Application\\HumanRating\\Dtos\\AiHumanComparisonDtos.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Application\\HumanRating\\Dtos\\AiHumanComparisonDtos.cs",
+              "RelativeToolTip": "src\\Toeic.Application\\HumanRating\\Dtos\\AiHumanComparisonDtos.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-01T11:11:04.951Z",
+              "EditorCaption": ""
             }
           ]
         }

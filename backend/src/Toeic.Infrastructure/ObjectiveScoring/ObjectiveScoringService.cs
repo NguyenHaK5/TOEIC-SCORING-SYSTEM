@@ -176,8 +176,10 @@ public sealed class ObjectiveScoringService : IObjectiveScoringService
             session.ReadingScore,
             summary.ReadingCorrectCount,
             summary.ReadingTotalCount,
-            session.WritingScore,
-            session.TotalScore,
+            //session.WritingScore,
+            //session.TotalScore,
+            writingResult.OverallScore, // Lấy trực tiếp từ kết quả Writing đã phân giải
+            (session.ListeningScore ?? 0m) + (session.ReadingScore ?? 0m) + (writingResult.OverallScore ?? 0m), // Cập nhật TotalScore
 
             writingResult);
     }

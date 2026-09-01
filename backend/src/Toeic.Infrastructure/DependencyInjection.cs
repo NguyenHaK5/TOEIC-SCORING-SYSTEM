@@ -6,15 +6,19 @@ using Toeic.Application.Auth;
 using Toeic.Application.Common.Interfaces;
 using Toeic.Application.ExamManagement;
 using Toeic.Application.ExamTaking;
+using Toeic.Application.HumanRating;
 using Toeic.Application.ObjectiveScoring;
 using Toeic.Application.RubricManagement;
+using Toeic.Application.Scoring;
 using Toeic.Application.WritingAssessment;
 using Toeic.Infrastructure.Auth;
 using Toeic.Infrastructure.ExamManagement;
 using Toeic.Infrastructure.ExamTaking;
+using Toeic.Infrastructure.HumanRating;
 using Toeic.Infrastructure.ObjectiveScoring;
 using Toeic.Infrastructure.Persistence;
 using Toeic.Infrastructure.RubricManagement;
+using Toeic.Infrastructure.Scoring;
 using Toeic.Infrastructure.Security;
 using Toeic.Infrastructure.WritingAssessment;
 
@@ -77,6 +81,11 @@ public static class DependencyInjection
         services.AddSingleton<IWritingAssessmentQueue, InMemoryWritingAssessmentQueue>();
         services.AddHostedService<WritingAssessmentBackgroundWorker>();
         services.AddScoped<IWritingResultService, WritingResultService>();
+
+
+
+        services.AddScoped<IHumanRatingService, HumanRatingService>();
+        services.AddScoped<IWritingScoreResolver, WritingScoreResolver>();
 
         return services;
     }

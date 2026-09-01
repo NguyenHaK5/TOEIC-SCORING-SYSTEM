@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System.Text.Json;
 using Toeic.Application.Common.Exceptions;
+using Toeic.Application.Scoring;
 using Toeic.Application.WritingAssessment;
 using Toeic.Application.WritingAssessment.Dtos;
 using Toeic.Domain.Entities;
@@ -34,17 +35,20 @@ public class WritingResultService : IWritingResultService
     private readonly IAiAssessmentService _aiAssessmentService;
     private readonly IWritingAssessmentQueue _queue;
     private readonly ILogger<WritingResultService> _logger;
+    private readonly IWritingScoreResolver _writingScoreResolver;
 
     public WritingResultService(
         AppDbContext db,
         IAiAssessmentService aiAssessmentService,
         IWritingAssessmentQueue queue,
-        ILogger<WritingResultService> logger)
+        ILogger<WritingResultService> logger,
+        IWritingScoreResolver writingScoreResolver)
     {
         _db = db;
         _aiAssessmentService = aiAssessmentService;
         _queue = queue;
         _logger = logger;
+        _writingScoreResolver = writingScoreResolver;
     }
 
     public async Task ProcessExamSessionAsync(Guid examSessionId, CancellationToken ct)
@@ -89,22 +93,48 @@ public class WritingResultService : IWritingResultService
         var questionResults = new List<WritingQuestionResultDto>();
         var needsProcessing = false;
 
+        // 1. Phân giải điểm chính thức (Human đè AI) dạng Batch
+        var answerIds = answers.Select(a => a.Id).ToList();
+        var officialScores = await _writingScoreResolver.ResolveManyAsync(answerIds, ct);
+
         foreach (var answer in answers)
         {
-            var existing = await _db.WritingAssessments
-                .Include(w => w.CriterionScores)
-                .Where(w => w.CandidateAnswerId == answer.Id && w.IsCurrent)
-                .FirstOrDefaultAsync(ct);
+            officialScores.TryGetValue(answer.Id, out var officialScore);
 
-            if (existing is not null)
+            if (officialScore?.Status == OfficialScoreStatus.Scored)
             {
-                questionResults.Add(ToDto(answer, existing));
+                if (officialScore.Source == OfficialScoreSource.Human)
+                {
+                    // Lấy chi tiết điểm Human
+                    var humanAssessment = await _db.HumanAssessments
+                        .Include(h => h.CriterionScores)
+                        .Where(h => h.CandidateAnswerId == answer.Id && h.IsFinal)
+                        .FirstOrDefaultAsync(ct);
+
+                    if (humanAssessment != null)
+                    {
+                        questionResults.Add(ToDtoFromHuman(answer, humanAssessment));
+                    }
+                }
+                else // AI
+                {
+                    // Lấy chi tiết điểm AI
+                    var aiAssessment = await _db.WritingAssessments
+                        .Include(w => w.CriterionScores)
+                        .Where(w => w.CandidateAnswerId == answer.Id && w.IsCurrent)
+                        .FirstOrDefaultAsync(ct);
+
+                    if (aiAssessment != null)
+                    {
+                        questionResults.Add(ToDto(answer, aiAssessment));
+                    }
+                }
             }
-            else if (string.IsNullOrWhiteSpace(answer.AnswerText))
+            else if (officialScore?.Status == OfficialScoreStatus.NotAnswered)
             {
                 questionResults.Add(WritingQuestionResultDto.NotAnswered(answer.QuestionId, answer.Question.QuestionType));
             }
-            else
+            else // Pending
             {
                 questionResults.Add(WritingQuestionResultDto.Pending(answer.QuestionId, answer.Question.QuestionType));
                 needsProcessing = true;
@@ -113,7 +143,7 @@ public class WritingResultService : IWritingResultService
 
         if (needsProcessing)
         {
-            // Self-healing safety net (PHASE3-ISSUE-06): covers the in-memory queue losing a
+            // Self - healing safety net(PHASE3-ISSUE - 06): covers the in-memory queue losing a
             // job (e.g. app restarted between submit and worker processing it). Safe to
             // enqueue duplicates — ProcessExamSessionAsync always re-checks IsCurrent before
             // calling the AI, so a redundant job is a cheap no-op, not a duplicate score.
@@ -132,6 +162,78 @@ public class WritingResultService : IWritingResultService
             Questions = questionResults
         };
     }
+
+    // Hàm chuyển đổi DTO riêng cho điểm do người chấm
+    private static WritingQuestionResultDto ToDtoFromHuman(CandidateAnswer answer, HumanAssessment assessment)
+    {
+        var criterionDtos = (assessment.CriterionScores ?? new List<AssessmentCriterionScore>())
+            .Select(c => new CriterionScoreDto
+            {
+                Criterion = c.CriterionCode,
+                Score = c.Score,
+                Weight = 0m
+            })
+            .ToList();
+
+        return new WritingQuestionResultDto
+        {
+            QuestionId = answer.QuestionId,
+            QuestionType = answer.Question.QuestionType,
+            Status = WritingQuestionStatus.Scored,
+            OverallScore = assessment.OverallScore,
+            Feedback = assessment.Feedback,
+            Strengths = new List<string>(), // Lỗi JSON không áp dụng cho Human Rater
+            Weaknesses = new List<string>(),
+            Corrections = new List<string>(),
+            CriterionScores = criterionDtos
+        };
+    }
+
+    //public async Task<WritingSectionResultDto> GetSectionResultAsync(Guid examSessionId, CancellationToken ct)
+    //{
+    //    var answers = await LoadWritingAnswersAsync(examSessionId, ct);
+    //    var questionResults = new List<WritingQuestionResultDto>();
+    //    var needsProcessing = false;
+
+    //    foreach (var answer in answers)
+    //    {
+    //        var existing = await _db.WritingAssessments
+    //            .Include(w => w.CriterionScores)
+    //            .Where(w => w.CandidateAnswerId == answer.Id && w.IsCurrent)
+    //            .FirstOrDefaultAsync(ct);
+
+    //        if (existing is not null)
+    //        {
+    //            questionResults.Add(ToDto(answer, existing));
+    //        }
+    //        else if (string.IsNullOrWhiteSpace(answer.AnswerText))
+    //        {
+    //            questionResults.Add(WritingQuestionResultDto.NotAnswered(answer.QuestionId, answer.Question.QuestionType));
+    //        }
+    //        else
+    //        {
+    //            questionResults.Add(WritingQuestionResultDto.Pending(answer.QuestionId, answer.Question.QuestionType));
+    //            needsProcessing = true;
+    //        }
+    //    }
+
+    //    if (needsProcessing)
+    //    {    
+    //        await _queue.EnqueueAsync(new WritingAssessmentJob(examSessionId), ct);
+    //    }
+
+    //    var scored = questionResults.Where(q => q.Status == WritingQuestionStatus.Scored).ToList();
+
+    //    return new WritingSectionResultDto
+    //    {
+    //        QuestionsTotal = questionResults.Count,
+    //        QuestionsScored = scored.Count,
+    //        OverallScore = scored.Count > 0
+    //            ? Math.Round(scored.Average(q => q.OverallScore!.Value), 2)
+    //            : null,
+    //        Questions = questionResults
+    //    };
+    //}
 
     private async Task<List<CandidateAnswer>> LoadWritingAnswersAsync(Guid examSessionId, CancellationToken ct)
         => await _db.CandidateAnswers
