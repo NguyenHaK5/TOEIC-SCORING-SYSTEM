@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Toeic.Application.Auth;
 using Toeic.Application.Common.Interfaces;
+using Toeic.Application.Dashboard;
 using Toeic.Application.ExamManagement;
 using Toeic.Application.ExamTaking;
 using Toeic.Application.HumanRating;
@@ -12,6 +13,7 @@ using Toeic.Application.RubricManagement;
 using Toeic.Application.Scoring;
 using Toeic.Application.WritingAssessment;
 using Toeic.Infrastructure.Auth;
+using Toeic.Infrastructure.Dashboard;
 using Toeic.Infrastructure.ExamManagement;
 using Toeic.Infrastructure.ExamTaking;
 using Toeic.Infrastructure.HumanRating;
@@ -86,6 +88,15 @@ public static class DependencyInjection
 
         services.AddScoped<IHumanRatingService, HumanRatingService>();
         services.AddScoped<IWritingScoreResolver, WritingScoreResolver>();
+
+
+        services.AddScoped<IWritingSessionScoreAggregator, WritingSessionScoreAggregator>();
+        services.AddScoped<IHistoryService, HistoryService>();
+
+
+        services.AddScoped<ICandidateAnalyticsService, CandidateAnalyticsService>();
+
+        services.AddScoped<IAdminDashboardService, AdminDashboardService>();
 
         return services;
     }
