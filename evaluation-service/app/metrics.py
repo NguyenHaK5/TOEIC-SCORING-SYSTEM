@@ -53,13 +53,25 @@ def _pairwise_metrics(human: pd.Series, ai: pd.Series, agreement_threshold: floa
         )
         return result
 
+
     pearson_r, pearson_p = stats.pearsonr(human, ai)
     spearman_r, spearman_p = stats.spearmanr(human, ai)
-    result["pearsonR"] = float(pearson_r)
-    result["pearsonPValue"] = float(pearson_p)
-    result["spearmanR"] = float(spearman_r)
-    result["spearmanPValue"] = float(spearman_p)
+
+    result["pearsonR"] = float(pearson_r) if not np.isnan(pearson_r) else None
+    result["pearsonPValue"] = float(pearson_p) if not np.isnan(pearson_p) else None
+    result["spearmanR"] = float(spearman_r) if not np.isnan(spearman_r) else None
+    result["spearmanPValue"] = float(spearman_p) if not np.isnan(spearman_p) else None
     return result
+
+
+
+    # pearson_r, pearson_p = stats.pearsonr(human, ai)
+    # spearman_r, spearman_p = stats.spearmanr(human, ai)
+    # result["pearsonR"] = float(pearson_r)
+    # result["pearsonPValue"] = float(pearson_p)
+    # result["spearmanR"] = float(spearman_r)
+    # result["spearmanPValue"] = float(spearman_p)
+    # return result
 
 
 def compute_overall_metrics(overall_df: pd.DataFrame, agreement_threshold: float) -> dict:

@@ -284,4 +284,23 @@ public class ExamService : IExamService
         UpdatedAt = e.UpdatedAt,
         AssignedTests = assignedTests,
     };
+
+
+
+    public async Task<List<CandidateExamSummaryDto>> GetAvailableForCandidateAsync(CancellationToken ct = default)
+    {
+        return await _db.Exams
+            .Where(e => e.Status == ExamStatus.SCHEDULED || e.Status == ExamStatus.ONGOING)
+            .OrderBy(e => e.StartTime)
+            .Select(e => new CandidateExamSummaryDto(
+                e.Id,
+                e.ExamCode,
+                e.ExamName,
+                e.Description,
+                e.ExamDate,
+                e.StartTime,
+                e.EndTime,
+                e.Status.ToString().ToUpperInvariant()))
+            .ToListAsync(ct);
+    }
 }

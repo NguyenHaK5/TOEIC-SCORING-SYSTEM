@@ -9,7 +9,6 @@ namespace Toeic.Api.Controllers;
 /// <summary>Quản lý Exam (kỳ thi) — toàn bộ endpoint chỉ ADMIN được gọi (mục 12, prompt gốc: "Exam Management").</summary>
 [ApiController]
 [Route("api/v1/exams")]
-[Authorize(Roles = nameof(UserRole.ADMIN))]
 public class ExamsController : ApiControllerBase
 {
     private readonly IExamService _examService;
@@ -20,6 +19,7 @@ public class ExamsController : ApiControllerBase
     }
 
     [HttpPost]
+    [Authorize(Roles = nameof(UserRole.ADMIN))]
     [ProducesResponseType(typeof(ExamDto), StatusCodes.Status201Created)]
     public async Task<IActionResult> Create([FromBody] CreateExamRequest request, CancellationToken ct)
     {
@@ -28,6 +28,7 @@ public class ExamsController : ApiControllerBase
     }
 
     [HttpGet]
+    [Authorize(Roles = nameof(UserRole.ADMIN))]
     [ProducesResponseType(typeof(Toeic.Application.Common.Dtos.PagedResult<ExamListItemDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> List([FromQuery] ExamListQuery query, CancellationToken ct)
     {
@@ -36,6 +37,7 @@ public class ExamsController : ApiControllerBase
     }
 
     [HttpGet("{examId:guid}")]
+    [Authorize(Roles = nameof(UserRole.ADMIN))]
     [ProducesResponseType(typeof(ExamDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetById(Guid examId, CancellationToken ct)
     {
@@ -44,6 +46,7 @@ public class ExamsController : ApiControllerBase
     }
 
     [HttpPut("{examId:guid}")]
+    [Authorize(Roles = nameof(UserRole.ADMIN))]
     [ProducesResponseType(typeof(ExamDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> Update(Guid examId, [FromBody] UpdateExamRequest request, CancellationToken ct)
     {
@@ -52,6 +55,7 @@ public class ExamsController : ApiControllerBase
     }
 
     [HttpDelete("{examId:guid}")]
+    [Authorize(Roles = nameof(UserRole.ADMIN))]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<IActionResult> Delete(Guid examId, CancellationToken ct)
     {
@@ -61,6 +65,7 @@ public class ExamsController : ApiControllerBase
 
     /// <summary>Chuyển trạng thái theo state machine DRAFT→SCHEDULED→ONGOING→COMPLETED / CANCELLED.</summary>
     [HttpPost("{examId:guid}/status")]
+    [Authorize(Roles = nameof(UserRole.ADMIN))]
     [ProducesResponseType(typeof(ExamDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> ChangeStatus(Guid examId, [FromBody] ChangeExamStatusRequest request, CancellationToken ct)
     {
@@ -69,6 +74,7 @@ public class ExamsController : ApiControllerBase
     }
 
     [HttpPost("{examId:guid}/tests")]
+    [Authorize(Roles = nameof(UserRole.ADMIN))]
     [ProducesResponseType(typeof(ExamTestSummaryDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> AssignTest(Guid examId, [FromBody] AssignTestToExamRequest request, CancellationToken ct)
     {
@@ -77,10 +83,25 @@ public class ExamsController : ApiControllerBase
     }
 
     [HttpDelete("{examId:guid}/tests/{testId:guid}")]
+    [Authorize(Roles = nameof(UserRole.ADMIN))]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<IActionResult> UnassignTest(Guid examId, Guid testId, CancellationToken ct)
     {
         await _examService.UnassignTestAsync(examId, testId, ct);
         return NoContent();
+    }
+
+
+
+    // Toeic.Api/Controllers/ExamsController.cs — thêm action mới, KHÔNG đổi
+    // action ADMIN hiện có. Đặt route "available" TRƯỚC route "{id}" nếu
+    // ASP.NET routing bị nhầm "available" thành route param id (thường không
+    // vấn đề với [HttpGet("available")] tường minh, nhưng nêu ra để lưu ý).
+    [HttpGet("available")]
+    [Authorize(Roles = nameof(UserRole.CANDIDATE))]
+    public async Task<IActionResult> GetAvailableForCandidate(CancellationToken ct)
+    {
+        var result = await _examService.GetAvailableForCandidateAsync(ct);
+        return Ok(result);
     }
 }

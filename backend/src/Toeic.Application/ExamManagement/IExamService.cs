@@ -32,4 +32,8 @@ public interface IExamService
     /// vì ExamSessions cũ vẫn tham chiếu TestId này qua Exam đó).
     /// </summary>
     Task UnassignTestAsync(Guid examId, Guid testId, CancellationToken ct = default);
+
+
+
+    Task<List<CandidateExamSummaryDto>> GetAvailableForCandidateAsync(CancellationToken ct = default);
 }

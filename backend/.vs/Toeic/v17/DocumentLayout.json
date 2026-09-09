@@ -1,28 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{175E95C2-2DC3-4611-9F7B-45C3295463D3}|src\\Toeic.Infrastructure\\Toeic.Infrastructure.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.infrastructure\\dashboard\\admindashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{175E95C2-2DC3-4611-9F7B-45C3295463D3}|src\\Toeic.Infrastructure\\Toeic.Infrastructure.csproj|solutionrelative:src\\toeic.infrastructure\\dashboard\\admindashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{175E95C2-2DC3-4611-9F7B-45C3295463D3}|src\\Toeic.Infrastructure\\Toeic.Infrastructure.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{175E95C2-2DC3-4611-9F7B-45C3295463D3}|src\\Toeic.Infrastructure\\Toeic.Infrastructure.csproj|solutionrelative:src\\toeic.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{894A9A0A-6BE0-4403-BE1D-A902F79AB212}|src\\Toeic.Api\\Toeic.Api.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.api\\controllers\\admindashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{894A9A0A-6BE0-4403-BE1D-A902F79AB212}|src\\Toeic.Api\\Toeic.Api.csproj|solutionrelative:src\\toeic.api\\controllers\\admindashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0A22D11A-EFFB-4318-8801-B4278C05F0F4}|src\\Toeic.Application\\Toeic.Application.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.application\\dashboard\\iadmindashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0A22D11A-EFFB-4318-8801-B4278C05F0F4}|src\\Toeic.Application\\Toeic.Application.csproj|solutionrelative:src\\toeic.application\\dashboard\\iadmindashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0A22D11A-EFFB-4318-8801-B4278C05F0F4}|src\\Toeic.Application\\Toeic.Application.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.application\\dashboard\\dtos\\admindashboarddtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0A22D11A-EFFB-4318-8801-B4278C05F0F4}|src\\Toeic.Application\\Toeic.Application.csproj|solutionrelative:src\\toeic.application\\dashboard\\dtos\\admindashboarddtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -30,76 +9,11 @@
       "DocumentGroups": [
         {
           "DockedHeight": 303,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:1390786666:0:{83107a3e-496a-485e-b455-16ddb978e55e}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AdminDashboardService.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Infrastructure\\Dashboard\\AdminDashboardService.cs",
-              "RelativeDocumentMoniker": "src\\Toeic.Infrastructure\\Dashboard\\AdminDashboardService.cs",
-              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Infrastructure\\Dashboard\\AdminDashboardService.cs",
-              "RelativeToolTip": "src\\Toeic.Infrastructure\\Dashboard\\AdminDashboardService.cs",
-              "ViewState": "AgIAANEAAAAAAAAAAAAcwOcAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-01T16:14:04.67Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DependencyInjection.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Infrastructure\\DependencyInjection.cs",
-              "RelativeDocumentMoniker": "src\\Toeic.Infrastructure\\DependencyInjection.cs",
-              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Infrastructure\\DependencyInjection.cs",
-              "RelativeToolTip": "src\\Toeic.Infrastructure\\DependencyInjection.cs",
-              "ViewState": "AgIAAEwAAAAAAAAAAAAQwGIAAABMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-01T16:16:16.87Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IAdminDashboardService.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Application\\Dashboard\\IAdminDashboardService.cs",
-              "RelativeDocumentMoniker": "src\\Toeic.Application\\Dashboard\\IAdminDashboardService.cs",
-              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Application\\Dashboard\\IAdminDashboardService.cs",
-              "RelativeToolTip": "src\\Toeic.Application\\Dashboard\\IAdminDashboardService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-01T16:14:02.79Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AdminDashboardDtos.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Application\\Dashboard\\Dtos\\AdminDashboardDtos.cs",
-              "RelativeDocumentMoniker": "src\\Toeic.Application\\Dashboard\\Dtos\\AdminDashboardDtos.cs",
-              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Application\\Dashboard\\Dtos\\AdminDashboardDtos.cs",
-              "RelativeToolTip": "src\\Toeic.Application\\Dashboard\\Dtos\\AdminDashboardDtos.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-01T16:13:59.43Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AdminDashboardController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Api\\Controllers\\AdminDashboardController.cs",
-              "RelativeDocumentMoniker": "src\\Toeic.Api\\Controllers\\AdminDashboardController.cs",
-              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Api\\Controllers\\AdminDashboardController.cs",
-              "RelativeToolTip": "src\\Toeic.Api\\Controllers\\AdminDashboardController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-01T16:13:57.44Z",
-              "EditorCaption": ""
             }
           ]
         }
