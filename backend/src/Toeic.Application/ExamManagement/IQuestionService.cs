@@ -18,4 +18,13 @@ public interface IQuestionService
 
     Task<QuestionOptionDto> UpdateOptionAsync(Guid optionId, UpdateQuestionOptionRequest request, CancellationToken ct = default);
     Task DeleteOptionAsync(Guid optionId, CancellationToken ct = default);
+
+
+
+    Task<BulkCreateQuestionsResultDto> BulkCreateAsync(Guid testId, BulkCreateQuestionsRequestDto request, CancellationToken ct = default);
+
+    Task<List<QuestionExportRowDto>> ExportForTestAsync(Guid testId, CancellationToken ct = default);
+
+    Task<BulkUpdateQuestionsResultDto> BulkUpdateAsync(
+        Guid testId, BulkUpdateQuestionsRequestDto request, CancellationToken ct = default);
 }

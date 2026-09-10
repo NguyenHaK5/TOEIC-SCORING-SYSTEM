@@ -29,3 +29,22 @@ export const questionsApi = {
 
   removeOption: (optionId: string) => apiClient.delete<void>(`/question-options/${optionId}`),
 };
+
+// File: frontend/lib/admin/questions-api.ts — thêm function
+export async function bulkCreateQuestions(testId: string, rows: BulkQuestionRow[]) {
+  return apiClient.post<BulkCreateQuestionsResult>(
+    `/tests/${testId}/questions/bulk`,
+    { rows },
+  );
+}
+
+export async function fetchQuestionsForExport(testId: string) {
+  return apiClient.get<QuestionExportRow[]>(`/tests/${testId}/questions/export`);
+}
+
+export async function bulkUpdateQuestions(testId: string, rows: BulkUpdateQuestionRow[]) {
+  return apiClient.put<BulkUpdateQuestionsResult>(
+    `/tests/${testId}/questions/bulk`,
+    { rows },
+  );
+}

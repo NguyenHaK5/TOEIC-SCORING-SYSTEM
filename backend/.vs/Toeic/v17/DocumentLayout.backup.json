@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{894A9A0A-6BE0-4403-BE1D-A902F79AB212}|src\\Toeic.Api\\Toeic.Api.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.api\\controllers\\examscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{894A9A0A-6BE0-4403-BE1D-A902F79AB212}|src\\Toeic.Api\\Toeic.Api.csproj|solutionrelative:src\\toeic.api\\controllers\\examscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{894A9A0A-6BE0-4403-BE1D-A902F79AB212}|src\\Toeic.Api\\Toeic.Api.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.api\\controllers\\questionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{894A9A0A-6BE0-4403-BE1D-A902F79AB212}|src\\Toeic.Api\\Toeic.Api.csproj|solutionrelative:src\\toeic.api\\controllers\\questionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0A22D11A-EFFB-4318-8801-B4278C05F0F4}|src\\Toeic.Application\\Toeic.Application.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.application\\exammanagement\\dtos\\candidateexamsummarydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0A22D11A-EFFB-4318-8801-B4278C05F0F4}|src\\Toeic.Application\\Toeic.Application.csproj|solutionrelative:src\\toeic.application\\exammanagement\\dtos\\candidateexamsummarydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{175E95C2-2DC3-4611-9F7B-45C3295463D3}|src\\Toeic.Infrastructure\\Toeic.Infrastructure.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.infrastructure\\exammanagement\\questionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{175E95C2-2DC3-4611-9F7B-45C3295463D3}|src\\Toeic.Infrastructure\\Toeic.Infrastructure.csproj|solutionrelative:src\\toeic.infrastructure\\exammanagement\\questionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0A22D11A-EFFB-4318-8801-B4278C05F0F4}|src\\Toeic.Application\\Toeic.Application.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.application\\exammanagement\\iexamservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0A22D11A-EFFB-4318-8801-B4278C05F0F4}|src\\Toeic.Application\\Toeic.Application.csproj|solutionrelative:src\\toeic.application\\exammanagement\\iexamservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0A22D11A-EFFB-4318-8801-B4278C05F0F4}|src\\Toeic.Application\\Toeic.Application.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.application\\exammanagement\\iquestionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A22D11A-EFFB-4318-8801-B4278C05F0F4}|src\\Toeic.Application\\Toeic.Application.csproj|solutionrelative:src\\toeic.application\\exammanagement\\iquestionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{175E95C2-2DC3-4611-9F7B-45C3295463D3}|src\\Toeic.Infrastructure\\Toeic.Infrastructure.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.infrastructure\\exammanagement\\examservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{175E95C2-2DC3-4611-9F7B-45C3295463D3}|src\\Toeic.Infrastructure\\Toeic.Infrastructure.csproj|solutionrelative:src\\toeic.infrastructure\\exammanagement\\examservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0A22D11A-EFFB-4318-8801-B4278C05F0F4}|src\\Toeic.Application\\Toeic.Application.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.application\\exammanagement\\dtos\\bulkquestiondtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A22D11A-EFFB-4318-8801-B4278C05F0F4}|src\\Toeic.Application\\Toeic.Application.csproj|solutionrelative:src\\toeic.application\\exammanagement\\dtos\\bulkquestiondtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A22D11A-EFFB-4318-8801-B4278C05F0F4}|src\\Toeic.Application\\Toeic.Application.csproj|c:\\users\\admin\\downloads\\datn\\code\\toeic-scoring-system\\backend\\src\\toeic.application\\common\\exceptions\\appexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A22D11A-EFFB-4318-8801-B4278C05F0F4}|src\\Toeic.Application\\Toeic.Application.csproj|solutionrelative:src\\toeic.application\\common\\exceptions\\appexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 303,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,51 +38,67 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ExamService.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Infrastructure\\ExamManagement\\ExamService.cs",
-              "RelativeDocumentMoniker": "src\\Toeic.Infrastructure\\ExamManagement\\ExamService.cs",
-              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Infrastructure\\ExamManagement\\ExamService.cs",
-              "RelativeToolTip": "src\\Toeic.Infrastructure\\ExamManagement\\ExamService.cs",
-              "ViewState": "AgIAAAEBAAAAAAAAAAAcwCgBAAAbAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "QuestionsController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Api\\Controllers\\QuestionsController.cs",
+              "RelativeDocumentMoniker": "src\\Toeic.Api\\Controllers\\QuestionsController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Api\\Controllers\\QuestionsController.cs",
+              "RelativeToolTip": "src\\Toeic.Api\\Controllers\\QuestionsController.cs",
+              "ViewState": "AgIAAFYAAAAAAAAAAAAswHMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-09T06:47:33.394Z"
+              "WhenOpened": "2026-09-09T08:45:53.94Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IExamService.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Application\\ExamManagement\\IExamService.cs",
-              "RelativeDocumentMoniker": "src\\Toeic.Application\\ExamManagement\\IExamService.cs",
-              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Application\\ExamManagement\\IExamService.cs",
-              "RelativeToolTip": "src\\Toeic.Application\\ExamManagement\\IExamService.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "AppException.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Application\\Common\\Exceptions\\AppException.cs",
+              "RelativeDocumentMoniker": "src\\Toeic.Application\\Common\\Exceptions\\AppException.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Application\\Common\\Exceptions\\AppException.cs",
+              "RelativeToolTip": "src\\Toeic.Application\\Common\\Exceptions\\AppException.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-09T06:47:01.586Z"
+              "WhenOpened": "2026-09-09T08:42:29.54Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BulkQuestionDtos.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Application\\ExamManagement\\Dtos\\BulkQuestionDtos.cs",
+              "RelativeDocumentMoniker": "src\\Toeic.Application\\ExamManagement\\Dtos\\BulkQuestionDtos.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Application\\ExamManagement\\Dtos\\BulkQuestionDtos.cs",
+              "RelativeToolTip": "src\\Toeic.Application\\ExamManagement\\Dtos\\BulkQuestionDtos.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAwwEYAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-09T08:40:53.781Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CandidateExamSummaryDto.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Application\\ExamManagement\\Dtos\\CandidateExamSummaryDto.cs",
-              "RelativeDocumentMoniker": "src\\Toeic.Application\\ExamManagement\\Dtos\\CandidateExamSummaryDto.cs",
-              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Application\\ExamManagement\\Dtos\\CandidateExamSummaryDto.cs",
-              "RelativeToolTip": "src\\Toeic.Application\\ExamManagement\\Dtos\\CandidateExamSummaryDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAACAAAAAAAAAA==",
+              "Title": "QuestionService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Infrastructure\\ExamManagement\\QuestionService.cs",
+              "RelativeDocumentMoniker": "src\\Toeic.Infrastructure\\ExamManagement\\QuestionService.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Infrastructure\\ExamManagement\\QuestionService.cs",
+              "RelativeToolTip": "src\\Toeic.Infrastructure\\ExamManagement\\QuestionService.cs",
+              "ViewState": "AgIAAPcBAAAAAAAAAAAwwP8BAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-09T06:44:57.559Z"
+              "WhenOpened": "2026-09-09T08:30:16.735Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ExamsController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Api\\Controllers\\ExamsController.cs",
-              "RelativeDocumentMoniker": "src\\Toeic.Api\\Controllers\\ExamsController.cs",
-              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Api\\Controllers\\ExamsController.cs",
-              "RelativeToolTip": "src\\Toeic.Api\\Controllers\\ExamsController.cs",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAAAGYAAAAFAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "IQuestionService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Application\\ExamManagement\\IQuestionService.cs",
+              "RelativeDocumentMoniker": "src\\Toeic.Application\\ExamManagement\\IQuestionService.cs",
+              "ToolTip": "C:\\Users\\Admin\\Downloads\\DATN\\CODE\\toeic-scoring-system\\backend\\src\\Toeic.Application\\ExamManagement\\IQuestionService.cs",
+              "RelativeToolTip": "src\\Toeic.Application\\ExamManagement\\IQuestionService.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwBwAAABcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-09T06:42:20.357Z",
+              "WhenOpened": "2026-09-09T08:29:58.294Z",
               "EditorCaption": ""
             }
           ]

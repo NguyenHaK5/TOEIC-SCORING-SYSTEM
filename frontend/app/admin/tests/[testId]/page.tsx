@@ -150,9 +150,14 @@ export default function TestDetailPage() {
             Câu hỏi ({questions?.length ?? 0})
           </h2>
           {isDraft && (
-            <Button asChild variant="outline" size="sm">
-              <Link href={`/admin/tests/${testId}/questions/new`}>Thêm câu hỏi</Link>
-            </Button>
+            <div className="flex items-center gap-2">
+              <Button asChild variant="outline" size="sm">
+                <Link href={`/admin/tests/${testId}/questions/import`}>Nhập từ Excel</Link>
+              </Button>
+              <Button asChild variant="default" size="sm">
+                <Link href={`/admin/tests/${testId}/questions/new`}>Thêm câu hỏi</Link>
+              </Button>
+            </div>
           )}
         </div>
 

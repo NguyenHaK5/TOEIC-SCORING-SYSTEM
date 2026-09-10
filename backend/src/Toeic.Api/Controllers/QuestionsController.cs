@@ -87,4 +87,31 @@ public class QuestionsController : ApiControllerBase
         await _questionService.DeleteOptionAsync(optionId, ct);
         return NoContent();
     }
+
+
+    // File: backend/src/Toeic.Api/Controllers/QuestionsController.cs — thêm action mới
+    [HttpPost("~/api/v1/tests/{testId:guid}/questions/bulk")]
+    public async Task<IActionResult> BulkCreate(
+        Guid testId, [FromBody] BulkCreateQuestionsRequestDto request, CancellationToken ct)
+    {
+        var result = await _questionService.BulkCreateAsync(testId, request, ct);
+        return result.Success ? Ok(result) : UnprocessableEntity(result);
+    }
+
+    [HttpGet("~/api/v1/tests/{testId:guid}/questions/export")]
+    [Authorize(Roles = "ADMIN")]
+    public async Task<IActionResult> Export(Guid testId, CancellationToken ct)
+    {
+        var rows = await _questionService.ExportForTestAsync(testId, ct);
+        return Ok(rows);
+    }
+
+    [HttpPut("~/api/v1/tests/{testId:guid}/questions/bulk")]
+    [Authorize(Roles = "ADMIN")]
+    public async Task<IActionResult> BulkUpdate(
+        Guid testId, [FromBody] BulkUpdateQuestionsRequestDto request, CancellationToken ct)
+    {
+        var result = await _questionService.BulkUpdateAsync(testId, request, ct);
+        return result.Success ? Ok(result) : UnprocessableEntity(result);
+    }
 }
