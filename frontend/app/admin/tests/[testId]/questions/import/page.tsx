@@ -8,11 +8,12 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import { BulkQuestionRow } from "@/types/question-import";
 
 export default function ImportQuestionsPage() {
   const { testId } = useParams<{ testId: string }>();
   const router = useRouter();
-  const [rows, setRows] = useState<React.ChangeEvent<HTMLInputElement>[]>([]); // Bạn có thể thay 'any' bằng type BulkQuestionRow của bạn
+  const [rows, setRows] = useState<BulkQuestionRow[]>([]); // Bạn có thể thay 'any' bằng type BulkQuestionRow của bạn
   const [clientErrors, setClientErrors] = useState<string[]>([]);
   const [serverErrors, setServerErrors] = useState<{ rowNumber: number; errors: string[] }[]>([]);
   const [submitting, setSubmitting] = useState(false);
