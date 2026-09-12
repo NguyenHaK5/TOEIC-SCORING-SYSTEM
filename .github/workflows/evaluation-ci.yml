@@ -43,7 +43,7 @@ jobs:
         # PHASE8-ISSUE-11: ruff là tool mới thêm ở Phase 8, chưa từng chạy
         # trên code Phase 5 — không chặn pipeline lần đầu, gỡ continue-on-error
         # sau khi Dragon đã chạy `ruff check app --fix` cục bộ 1 lần.
-        continue-on-error: true
+        # continue-on-error: true
         run: ruff check app
 
       - name: Test (pytest)

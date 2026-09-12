@@ -54,7 +54,7 @@ jobs:
         # PHASE8-ISSUE-10: code Phase 1-6 chưa từng qua `dotnet format`, bước
         # này có thể fail lần đầu. Không chặn pipeline cho tới khi Dragon
         # chạy `dotnet format` cục bộ 1 lần và bỏ dòng continue-on-error này.
-        continue-on-error: true
+        # continue-on-error: true
         run: dotnet format Toeic.sln --verify-no-changes --no-restore
 
       - name: Build (Release)
@@ -67,7 +67,7 @@ jobs:
           # Connection string cho Toeic.IntegrationTests (nếu project đọc từ
           # biến môi trường này — xác nhận lại tên biến thật đang dùng trong
           # test project, xem PHASE8_PART2_INTEGRATION_GUIDE.md).
-          ConnectionStrings__Default: >-
+          ConnectionStrings__DefaultConnection: >-
             Host=localhost;Port=5432;Database=toeic_test;
             Username=toeic_test;Password=toeic_test_password
           # Giá trị dummy cho JWT/LLM để test khởi tạo DI container không
