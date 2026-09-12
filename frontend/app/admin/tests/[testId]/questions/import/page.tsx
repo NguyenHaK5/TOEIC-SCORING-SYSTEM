@@ -12,7 +12,7 @@ import Link from "next/link";
 export default function ImportQuestionsPage() {
   const { testId } = useParams<{ testId: string }>();
   const router = useRouter();
-  const [rows, setRows] = useState<any[]>([]); // Bạn có thể thay 'any' bằng type BulkQuestionRow của bạn
+  const [rows, setRows] = useState<React.ChangeEvent<HTMLInputElement>[]>([]); // Bạn có thể thay 'any' bằng type BulkQuestionRow của bạn
   const [clientErrors, setClientErrors] = useState<string[]>([]);
   const [serverErrors, setServerErrors] = useState<{ rowNumber: number; errors: string[] }[]>([]);
   const [submitting, setSubmitting] = useState(false);
