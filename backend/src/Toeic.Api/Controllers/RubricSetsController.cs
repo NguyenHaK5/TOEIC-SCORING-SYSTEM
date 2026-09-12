@@ -10,10 +10,10 @@ namespace Toeic.Api.Controllers;
 [ApiController]
 [Route("api/v1/rubric-sets")]
 public class RubricSetsController : ApiControllerBase // ASSUMPTION: ApiControllerBase already exists
-                                                        // (created in Phase 1 Part 3) and exposes a
-                                                        // `CurrentUserId` property read from the JWT
-                                                        // `sub` claim. Replace with the real accessor
-                                                        // if the name differs.
+                                                      // (created in Phase 1 Part 3) and exposes a
+                                                      // `CurrentUserId` property read from the JWT
+                                                      // `sub` claim. Replace with the real accessor
+                                                      // if the name differs.
 {
     private readonly IRubricService _rubricService;
 

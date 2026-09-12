@@ -154,7 +154,7 @@ export default function TestDetailPage() {
               <Button asChild variant="outline" size="sm">
                 <Link href={`/admin/tests/${testId}/questions/import`}>Nhập từ Excel</Link>
               </Button>
-              <Button asChild variant="default" size="sm">
+              <Button asChild variant="primary" size="sm">
                 <Link href={`/admin/tests/${testId}/questions/new`}>Thêm câu hỏi</Link>
               </Button>
             </div>

@@ -1,6 +1,6 @@
 using Toeic.Domain.Enums; // ASSUMPTION: QuestionType and RubricSetStatus live here (same enum QuestionType
-                           // already used by Questions per Phase 0 schema E.2.6 / E.2.10). Adjust the
-                           // `using` if your actual enums live in a different namespace/file.
+                          // already used by Questions per Phase 0 schema E.2.6 / E.2.10). Adjust the
+                          // `using` if your actual enums live in a different namespace/file.
 
 namespace Toeic.Application.RubricManagement.Dtos;
 

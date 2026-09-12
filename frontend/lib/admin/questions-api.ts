@@ -8,6 +8,14 @@ import type {
   UpdateQuestionPayload,
 } from "@/types/question";
 
+import { 
+  BulkQuestionRow, 
+  BulkCreateQuestionsResult, 
+  QuestionExportRow, 
+  BulkUpdateQuestionRow, 
+  BulkUpdateQuestionsResult 
+} from "@/types/question-import";
+
 export const questionsApi = {
   listByTest: (testId: string) => apiClient.get<Question[]>(`/tests/${testId}/questions`),
 

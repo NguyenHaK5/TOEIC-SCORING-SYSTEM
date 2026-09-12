@@ -107,7 +107,7 @@ export default function AdminDashboardPage() {
                         {e.criterion !== "UNSPECIFIED" && ` · ${e.criterion}`}
                       </span>
                     </div>
-                    <span className="font-serif text-lg text-ink">{e.sampleSize}</span>
+                    <span className="font-serif text-lg text-ink">{e.count}</span>
                   </li>
                 ))}
               </ul>

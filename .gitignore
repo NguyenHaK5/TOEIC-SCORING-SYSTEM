@@ -3,13 +3,27 @@ backend/**/bin/
 backend/**/obj/
 *.user
 
-## Node / Next.js (frontend sẽ thêm ở phase sau)
+## Node / Next.js
 frontend/node_modules/
 frontend/.next/
 
-## Python (evaluation-service sẽ thêm ở phase sau)
+## Python
 evaluation-service/__pycache__/
+evaluation-service/**/__pycache__/
 evaluation-service/.venv/
+evaluation-service/.pytest_cache/
+.venv/
+
+## Secrets & env — QUAN TRỌNG: trước đây bị thiếu hoàn toàn
+.env
+**/.env
+frontend/.env.local
+**/appsettings.Development.json
+**/appsettings.Production.json
+
+## Dữ liệu export thật (có thể chứa thông tin thí sinh)
+evaluation-service/*.csv
+evaluation-service/*.xlsx
 
 ## OS / Editor
 .DS_Store

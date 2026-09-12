@@ -261,9 +261,9 @@ function ReportSection() {
               )}
             </tbody>
           </table>
-          {data.totalMatching > data.cases.length && (
+          {data.totalMatchingCases > data.cases.length && (
             <p className="border-t border-border px-4 py-2 text-[12px] text-muted">
-              Hiển thị {data.cases.length}/{data.totalMatching} case vượt ngưỡng.
+              Hiển thị {data.cases.length}/{data.totalMatchingCases} case vượt ngưỡng.
             </p>
           )}
         </div>

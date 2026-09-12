@@ -73,7 +73,7 @@ export default function ImportQuestionsPage() {
               }} 
             />
           </div>
-          <Button variant="secondary" onClick={downloadQuestionTemplate}>
+          <Button variant="outline" onClick={downloadQuestionTemplate}>
             Tải Template Mẫu
           </Button>
         </div>

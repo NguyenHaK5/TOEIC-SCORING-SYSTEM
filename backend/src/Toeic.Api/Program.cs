@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -115,6 +116,16 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+
+if (app.Configuration.GetValue<bool>("ApplyMigrationsOnStartup"))
+{
+    using var migrationScope = app.Services.CreateScope();
+    var dbContext = migrationScope.ServiceProvider.GetRequiredService<AppDbContext>();
+    dbContext.Database.Migrate();
+}
+
+
+
 // --- Middleware pipeline ----------------------------------------------------
 
 app.UseMiddleware<ExceptionHandlingMiddleware>();
@@ -140,12 +151,15 @@ app.MapGet("/api/v1/health", async (AppDbContext db) =>
 }).AllowAnonymous();
 
 // Seed tài khoản ADMIN đầu tiên nếu SeedAdmin:* được cấu hình và chưa có ADMIN nào (xem DbSeeder).
+// PHASE8-ISSUE-18: cùng scope, seed thêm tài khoản RATER cho evaluation-service nếu
+// SeedEvalService:* được cấu hình (dùng lại đúng db/hasher/seedLogger đã resolve ở trên).
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     var hasher = scope.ServiceProvider.GetRequiredService<IPasswordHasher>();
     var seedLogger = scope.ServiceProvider.GetRequiredService<ILoggerFactory>().CreateLogger("DbSeeder");
     await DbSeeder.SeedAdminAsync(db, hasher, app.Configuration, seedLogger);
+    await DbSeeder.SeedEvalServiceAsync(db, hasher, app.Configuration, seedLogger);
 }
 
 app.Run();

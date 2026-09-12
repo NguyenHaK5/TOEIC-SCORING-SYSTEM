@@ -1,0 +1,71 @@
+name: Frontend CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "frontend/**"
+      - ".github/workflows/frontend-ci.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "frontend/**"
+      - ".github/workflows/frontend-ci.yml"
+  workflow_dispatch:
+
+jobs:
+  build-and-lint:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint (ESLint)
+        run: npx eslint .
+
+      - name: Type check
+        run: npx tsc --noEmit
+
+      - name: Build
+        env:
+          # PHASE8-ISSUE-08: giá trị dummy để qua validate env lúc build
+          # (nếu lib/env.ts bắt buộc các biến này) — KHÔNG phải secret thật,
+          # không dùng ở runtime.
+          BACKEND_API_URL: http://localhost:8080/api/v1
+          EVALUATION_SERVICE_URL: http://localhost:8000/api/v1
+          REFRESH_COOKIE_TTL_DAYS: "7"
+          COOKIE_SECURE: "false"
+        run: npm run build
+
+  # PHASE8-ISSUE-09: chưa có Playwright test suite committed trong repo (Phase 7
+  # chỉ verify thủ công trong phiên làm việc). Job này để placeholder — bật lại
+  # khi Dragon bổ sung test suite thật (`npx playwright test`), hiện tại `if: false`
+  # để không chặn CI vì thiếu file test.
+  e2e-placeholder:
+    runs-on: ubuntu-latest
+    if: false
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm ci
+      - run: npx playwright install --with-deps
+      - run: npx playwright test

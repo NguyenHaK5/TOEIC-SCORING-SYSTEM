@@ -1,0 +1,37 @@
+name: Docker Build (validate, no push)
+
+# Xác nhận cả 3 Dockerfile (Phase 8 Part 1) vẫn build được sau mỗi thay đổi
+# vào main — KHÔNG push lên registry nào (xem docker-publish.yml cho việc đó).
+# Chạy độc lập với backend-ci/frontend-ci/evaluation-ci (path-based) vì build
+# Docker image cần build TOÀN BỘ 3 tầng dù chỉ 1 tầng đổi (base image
+# layer cache của GitHub Actions vẫn giúp các layer không đổi build lại nhanh).
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-images:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        service: [backend, frontend, evaluation]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build ${{ matrix.service }} image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: docker/${{ matrix.service }}.Dockerfile
+          push: false
+          tags: toeic-${{ matrix.service }}:ci
+          cache-from: type=gha,scope=${{ matrix.service }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.service }}

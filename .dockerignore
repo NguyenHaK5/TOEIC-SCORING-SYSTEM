@@ -1,0 +1,32 @@
+# Nội dung này nên đặt tại ROOT của repo với tên ".dockerignore" (không phải
+# trong thư mục docker/) vì build context của cả 3 Dockerfile là root ("..").
+# Đổi tên file này thành ".dockerignore" và đặt tại root khi áp dụng — xem
+# PHASE8_PART1_INTEGRATION_GUIDE.md mục "Việc BẮT BUỘC #4".
+
+# .NET
+backend/**/bin/
+backend/**/obj/
+backend/**/*.user
+
+# Node / Next.js
+frontend/node_modules/
+frontend/.next/
+frontend/.env*.local
+
+# Python
+evaluation-service/**/__pycache__/
+evaluation-service/**/*.pyc
+evaluation-service/.venv/
+evaluation-service/.pytest_cache/
+
+# Secrets & env
+.env
+docker/.env
+**/.env
+**/appsettings.Development.json
+
+# Misc
+.git/
+.gitignore
+*.md
+docs/

@@ -16,7 +16,7 @@ function required(name: string, fallback?: string): string {
 
 export const env = {
   /** Base URL của Toeic.Api, ví dụ https://localhost:5001 */
-  backendUrl: required("BACKEND_URL", "https://localhost:5001"),
+  backendUrl: required("BACKEND_URL", "https://localhost:8080"),
   /**
    * Base URL của evaluation-service (Python/FastAPI, Phase 5) — service
    * độc lập, KHÔNG cùng origin với Toeic.Api. Chỉ dùng server-side trong

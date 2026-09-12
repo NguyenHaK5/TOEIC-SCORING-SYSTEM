@@ -1,0 +1,88 @@
+name: Backend CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "backend/**"
+      - ".github/workflows/backend-ci.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "backend/**"
+      - ".github/workflows/backend-ci.yml"
+  workflow_dispatch:
+
+jobs:
+  build-lint-test:
+    runs-on: ubuntu-latest
+
+    # PHASE8-ISSUE-06: Postgres thật cho Toeic.IntegrationTests (nếu có).
+    # Unit test (Domain layer) không cần DB nhưng chạy chung job vẫn ổn —
+    # service container chỉ tốn thời gian khởi động ~5-10s, không ảnh hưởng
+    # unit test không dùng tới nó.
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: toeic_test
+          POSTGRES_USER: toeic_test
+          POSTGRES_PASSWORD: toeic_test_password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U toeic_test -d toeic_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Restore
+        working-directory: backend
+        run: dotnet restore Toeic.sln
+
+      - name: Lint (dotnet format --verify-no-changes)
+        working-directory: backend
+        # PHASE8-ISSUE-10: code Phase 1-6 chưa từng qua `dotnet format`, bước
+        # này có thể fail lần đầu. Không chặn pipeline cho tới khi Dragon
+        # chạy `dotnet format` cục bộ 1 lần và bỏ dòng continue-on-error này.
+        continue-on-error: true
+        run: dotnet format Toeic.sln --verify-no-changes --no-restore
+
+      - name: Build (Release)
+        working-directory: backend
+        run: dotnet build Toeic.sln --no-restore --configuration Release
+
+      - name: Test
+        working-directory: backend
+        env:
+          # Connection string cho Toeic.IntegrationTests (nếu project đọc từ
+          # biến môi trường này — xác nhận lại tên biến thật đang dùng trong
+          # test project, xem PHASE8_PART2_INTEGRATION_GUIDE.md).
+          ConnectionStrings__Default: >-
+            Host=localhost;Port=5432;Database=toeic_test;
+            Username=toeic_test;Password=toeic_test_password
+          # Giá trị dummy cho JWT/LLM để test khởi tạo DI container không
+          # crash vì thiếu config bắt buộc (không phải secret thật).
+          Jwt__Key: ci-test-only-not-a-real-secret-please-ignore-1234567890
+          Llm__ApiKey: ci-test-only-dummy-key
+        run: >-
+          dotnet test Toeic.sln --no-build --configuration Release
+          --logger "trx;LogFileName=test-results.trx"
+          --results-directory ./TestResults
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-test-results
+          path: backend/TestResults
+          retention-days: 14

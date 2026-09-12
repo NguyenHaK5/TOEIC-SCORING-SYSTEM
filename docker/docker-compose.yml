@@ -1,23 +1,158 @@
-# Phase 1: chỉ cần PostgreSQL để chạy migration + demo local.
-# backend/frontend/ai-service/evaluation-service sẽ được thêm dần ở các phase sau (mục 20 của prompt gốc).
+# docker/docker-compose.yml
+#
+# Thay thế bản docker-compose.yml cũ của Phase 1 Part 1 (chỉ có Postgres).
+# Chạy từ thư mục docker/:
+#   cd docker
+#   cp .env.example .env      # rồi điền giá trị thật, KHÔNG commit .env
+#   docker compose up -d --build
+#
+# Build context của backend/frontend/evaluation-service là ".." (root repo)
+# vì cả 3 Dockerfile đều COPY theo đường dẫn tương đối từ root (backend/,
+# frontend/, evaluation-service/) — xem chú thích đầu mỗi Dockerfile.
+
+name: toeic-scoring-system
+
+networks:
+  toeic-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+
 services:
   postgres:
-    image: postgres:16-alpine
+    image: postgres:16
     container_name: toeic-postgres
     restart: unless-stopped
     environment:
-      POSTGRES_DB: toeic_scoring
-      POSTGRES_USER: toeic
-      POSTGRES_PASSWORD: toeic_dev_only
+      POSTGRES_DB: ${POSTGRES_DB:-toeic}
+      POSTGRES_USER: ${POSTGRES_USER:-toeic_app}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT:-5432}:5432"
     volumes:
-      - toeic_pgdata:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - toeic-network
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U toeic -d toeic_scoring"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-toeic_app} -d ${POSTGRES_DB:-toeic}"]
       interval: 5s
       timeout: 5s
       retries: 10
+      start_period: 10s
 
-volumes:
-  toeic_pgdata:
+  backend:
+    build:
+      context: ..
+      dockerfile: docker/backend.Dockerfile
+    container_name: toeic-backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_ENVIRONMENT: Docker
+      ApplyMigrationsOnStartup: "true"
+      ConnectionStrings__Default: Host=postgres;Port=5432;Database=${POSTGRES_DB:-toeic};Username=${POSTGRES_USER:-toeic_app};Password=${POSTGRES_PASSWORD}
+      Jwt__Key: ${JWT_KEY:?JWT_KEY is required}
+      Jwt__AccessTokenMinutes: ${JWT_ACCESS_TOKEN_MINUTES:-30}
+      Jwt__Issuer: "ToeicScoringSystem"
+      Jwt__Audience: "ToeicClients"
+      SeedAdmin__Username: ${SEED_ADMIN_USERNAME:-}
+      SeedAdmin__Email: ${SEED_ADMIN_EMAIL:-}
+      SeedAdmin__Password: ${SEED_ADMIN_PASSWORD:-}
+      # PHASE8-ISSUE-18: tự seed tài khoản RATER "eval-service" khi backend
+      # khởi động — CỐ Ý dùng LẠI đúng EVAL_RATER_USERNAME/EVAL_RATER_PASSWORD
+      # (biến đã có sẵn, evaluation-service cũng đọc chính 2 biến này) thay vì
+      # tạo thêm 1 cặp biến riêng — đảm bảo backend seed ra tài khoản với đúng
+      # mật khẩu mà evaluation-service sẽ dùng để login, không thể bị lệch.
+      SeedEvalService__Username: ${EVAL_RATER_USERNAME:-}
+      SeedEvalService__Email: ${EVAL_RATER_EMAIL:-eval-service@toeic.local}
+      SeedEvalService__Password: ${EVAL_RATER_PASSWORD:-}
+      AiAssessment__Provider: ${LLM_PROVIDER:-Anthropic}
+      AiAssessment__ApiKey: ${LLM_API_KEY:?LLM_API_KEY is required}
+      AiAssessment__Model: ${LLM_MODEL:-claude-sonnet-4-6}
+    ports:
+      - "${BACKEND_PORT:-8080}:8080"
+    networks:
+      - toeic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/v1/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  evaluation-service:
+    build:
+      context: ..
+      dockerfile: docker/evaluation.Dockerfile
+    container_name: toeic-evaluation
+    restart: unless-stopped
+    depends_on:
+      backend:
+        condition: service_healthy
+    environment:
+      BACKEND_BASE_URL: "http://backend:8080"
+      EVAL_SERVICE_USERNAME: ${EVAL_RATER_USERNAME:?EVAL_RATER_USERNAME is required}
+      EVAL_SERVICE_PASSWORD: ${EVAL_RATER_PASSWORD:?EVAL_RATER_PASSWORD is required}
+    ports:
+      - "${EVALUATION_PORT:-8000}:8000"
+    networks:
+      - toeic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 15s
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: docker/frontend.Dockerfile
+      # ⚠️ FIX (PHASE8_PART1_HOTFIX): NEXT_PUBLIC_BACKEND_URL PHẢI truyền qua
+      # "args:" (build-time) — đặt ở "environment:" bên dưới KHÔNG đủ, vì
+      # Next.js inline biến NEXT_PUBLIC_* vào bundle JS ngay lúc build, không
+      # đọc lại lúc container chạy. Đây chính là nguyên nhân lỗi
+      # ERR_CONNECTION_REFUSED :5001 quan sát được (Image 1).
+      #
+      # Giá trị PHẢI dùng http:// (không phải https://) vì backend container
+      # chỉ nghe HTTP nội bộ (ASPNETCORE_URLS=http://+:8080, không có cert) —
+      # và giá trị này được BROWSER của người dùng gọi trực tiếp (không qua
+      # Route Handler proxy), nên phải là địa chỉ mà máy chạy trình duyệt
+      # (thường là host machine) truy cập được: "localhost:<BACKEND_PORT đã
+      # publish ra host>", không phải tên service nội bộ Docker "backend".
+      args:
+        NEXT_PUBLIC_BACKEND_URL: ${NEXT_PUBLIC_BACKEND_URL:-http://localhost:8080}
+    container_name: toeic-frontend
+    restart: unless-stopped
+    depends_on:
+      backend:
+        condition: service_healthy
+      evaluation-service:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      # Server-side only (Route Handler BFF, PHASE7-ISSUE-01) — dùng tên
+      # service nội bộ Docker network (KHÔNG phải localhost), vì đây là
+      # server Node.js bên trong container gọi ra, không phải browser.
+      BACKEND_URL: "http://backend:8080"
+      EVALUATION_SERVICE_URL: "http://evaluation-service:8000"
+      REFRESH_COOKIE_TTL_DAYS: "${REFRESH_COOKIE_TTL_DAYS:-7}"
+      COOKIE_SECURE: "${COOKIE_SECURE:-false}"
+      # Giữ lại NEXT_PUBLIC_BACKEND_URL ở đây CHỈ để nhất quán/dễ đọc khi
+      # `docker compose config` — KHÔNG có tác dụng thật với bundle JS đã
+      # build (xem ghi chú ở "args:" phía trên). Nguồn sự thật duy nhất cho
+      # biến này là "args:".
+      NEXT_PUBLIC_BACKEND_URL: ${NEXT_PUBLIC_BACKEND_URL:-http://localhost:8080}
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    networks:
+      - toeic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s

@@ -1,6 +1,7 @@
 // File: frontend/lib/admin/question-import-template.ts
 import * as XLSX from "xlsx";
 import { fetchQuestionsForExport } from "@/lib/admin/questions-api";
+import { BulkQuestionRow } from "@/types/question-import";
 
 const TEMPLATE_HEADERS = [
   "QuestionNumber", "Section", "QuestionType", "QuestionText",
