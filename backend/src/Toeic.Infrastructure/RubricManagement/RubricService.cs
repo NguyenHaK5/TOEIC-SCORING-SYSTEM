@@ -289,4 +289,204 @@ public class RubricService : IRubricService
             .Select(ToDto)
             .ToList()
     };
+
+
+
+
+
+    public async Task<BulkCreateRubricsResultDto> BulkCreateAsync(
+    Guid rubricSetId, BulkCreateRubricsRequestDto request, CancellationToken ct = default)
+    {
+        var rubricSet = await _db.RubricSets.FirstOrDefaultAsync(r => r.Id == rubricSetId, ct)
+            ?? throw new NotFoundAppException("RubricSet không tồn tại.");
+
+        if (rubricSet.Status != RubricSetStatus.DRAFT)
+            throw new ConflictAppException("Chỉ được thêm Rubric hàng loạt khi RubricSet đang ở trạng thái DRAFT.");
+
+        var existing = await _db.Rubrics.Where(r => r.RubricSetId == rubricSetId).ToListAsync(ct);
+
+        var errors = new List<BulkRowErrorDto>();
+        var newEntities = new List<Rubric>();
+        var seenInFile = new HashSet<(string Criterion, int Level)>();
+
+        // 1) Validate cấu trúc từng dòng (không dừng ở dòng đầu tiên)
+        foreach (var row in request.Rows)
+        {
+            var rowErrors = new List<string>();
+
+            if (string.IsNullOrWhiteSpace(row.Criterion))
+                rowErrors.Add("Thiếu Criterion.");
+            if (row.MinScore >= row.MaxScore)
+                rowErrors.Add("MinScore phải nhỏ hơn MaxScore.");
+            if (row.Weight <= 0 || row.Weight > 1)
+                rowErrors.Add("Weight phải trong khoảng (0, 1].");
+
+            var key = (row.Criterion?.Trim() ?? "", row.Level);
+            if (!seenInFile.Add(key))
+                rowErrors.Add($"Trùng cặp (Criterion, Level) = ('{row.Criterion}', {row.Level}) trong file.");
+            else if (existing.Any(e => e.Criterion == row.Criterion && e.Level == row.Level))
+                rowErrors.Add($"Cặp (Criterion, Level) = ('{row.Criterion}', {row.Level}) đã tồn tại trong RubricSet này.");
+
+            if (rowErrors.Count > 0)
+            {
+                errors.Add(new BulkRowErrorDto(row.RowNumber, rowErrors));
+                continue;
+            }
+
+            newEntities.Add(new Rubric
+            {
+                Id = Guid.NewGuid(),
+                RubricSetId = rubricSetId,
+                Criterion = row.Criterion!,
+                Level = row.Level,
+                MinScore = row.MinScore,
+                MaxScore = row.MaxScore,
+                Description = row.Description,
+                ScoringRule = row.ScoringRule,
+                Weight = row.Weight,
+                CreatedAt = DateTime.UtcNow,
+            });
+        }
+
+        if (errors.Count > 0)
+        {
+            return new BulkCreateRubricsResultDto(
+                Success: false, TotalRows: request.Rows.Count, CreatedCount: 0, Errors: errors);
+        }
+
+        // 2) Validate TOÀN BỘ bằng domain logic đã có (Weight nhất quán/Level trùng/overlap/tổng Weight=1.0)
+        //    — chạy trên existing + newEntities cùng lúc, vì tính hợp lệ là thuộc tính của cả bộ.
+        var combined = existing.Concat(newEntities).ToList();
+        var domainErrors = RubricSetValidation.Validate(combined).ToList();
+        if (domainErrors.Count > 0)
+        {
+            return new BulkCreateRubricsResultDto(
+                Success: false, TotalRows: request.Rows.Count, CreatedCount: 0,
+                Errors: [new BulkRowErrorDto(0, domainErrors)]); // RowNumber=0: lỗi ở cấp toàn bộ RubricSet, không riêng 1 dòng
+        }
+
+        // 3) All-or-nothing
+        await using var tx = await _db.Database.BeginTransactionAsync(ct);
+        _db.Rubrics.AddRange(newEntities);
+        await _db.SaveChangesAsync(ct);
+        await tx.CommitAsync(ct);
+
+        return new BulkCreateRubricsResultDto(
+            Success: true, TotalRows: request.Rows.Count, CreatedCount: newEntities.Count, Errors: []);
+    }
+
+    public async Task<List<RubricExportRowDto>> ExportForRubricSetAsync(Guid rubricSetId, CancellationToken ct = default)
+    {
+        var exists = await _db.RubricSets.AnyAsync(r => r.Id == rubricSetId, ct);
+        if (!exists) throw new NotFoundAppException("RubricSet không tồn tại.");
+
+        return await _db.Rubrics
+            .Where(r => r.RubricSetId == rubricSetId)
+            .OrderBy(r => r.Criterion).ThenBy(r => r.Level)
+            .Select(r => new RubricExportRowDto(
+                r.Id, r.Criterion, r.Level, r.MinScore, r.MaxScore, r.Description, r.ScoringRule, r.Weight))
+            .ToListAsync(ct);
+    }
+
+    public async Task<BulkUpdateRubricsResultDto> BulkUpdateAsync(
+        Guid rubricSetId, BulkUpdateRubricsRequestDto request, CancellationToken ct = default)
+    {
+        var rubricSet = await _db.RubricSets.FirstOrDefaultAsync(r => r.Id == rubricSetId, ct)
+            ?? throw new NotFoundAppException("RubricSet không tồn tại.");
+
+        if (rubricSet.Status != RubricSetStatus.DRAFT)
+            throw new ConflictAppException("Chỉ được sửa Rubric hàng loạt khi RubricSet đang ở trạng thái DRAFT.");
+
+        var existing = await _db.Rubrics
+            .Where(r => r.RubricSetId == rubricSetId)
+            .ToDictionaryAsync(r => r.Id, ct);
+
+        var errors = new List<BulkRowErrorDto>();
+        var updated = new List<(Rubric Entity, BulkUpdateRubricRowDto Row)>();
+        var seenIds = new HashSet<Guid>();
+        var seenKeys = new HashSet<(string, int)>();
+
+        foreach (var row in request.Rows)
+        {
+            var rowErrors = new List<string>();
+
+            if (!existing.TryGetValue(row.RubricId, out var entity))
+                rowErrors.Add($"RubricId '{row.RubricId}' không tồn tại trong RubricSet này.");
+            if (!seenIds.Add(row.RubricId))
+                rowErrors.Add($"RubricId '{row.RubricId}' bị lặp lại trong file.");
+
+            var key = (row.Criterion?.Trim() ?? "", row.Level);
+            if (!seenKeys.Add(key))
+                rowErrors.Add($"Trùng cặp (Criterion, Level) = ('{row.Criterion}', {row.Level}) trong file.");
+
+            if (string.IsNullOrWhiteSpace(row.Criterion))
+                rowErrors.Add("Thiếu Criterion.");
+            if (row.MinScore >= row.MaxScore)
+                rowErrors.Add("MinScore phải nhỏ hơn MaxScore.");
+            if (row.Weight <= 0 || row.Weight > 1)
+                rowErrors.Add("Weight phải trong khoảng (0, 1].");
+
+            if (rowErrors.Count > 0)
+            {
+                errors.Add(new BulkRowErrorDto(row.RowNumber, rowErrors));
+                continue;
+            }
+
+            updated.Add((entity!, row));
+        }
+
+        // Toàn bộ RubricId hiện có phải xuất hiện đủ trong file — tránh xoá nhầm tiêu chí không được đề cập
+        var missingIds = existing.Keys.Except(request.Rows.Select(r => r.RubricId)).ToList();
+        if (missingIds.Count > 0)
+        {
+            errors.Add(new BulkRowErrorDto(0,
+                [$"Thiếu {missingIds.Count} Rubric hiện có trong file (RubricId: {string.Join(", ", missingIds.Take(5))}{(missingIds.Count > 5 ? "..." : "")}). " +
+             "Bulk Update thay thế toàn bộ RubricSet — phải liệt kê đủ mọi dòng hiện có, kể cả dòng không đổi."]));
+        }
+
+        if (errors.Count > 0)
+        {
+            return new BulkUpdateRubricsResultDto(
+                Success: false, TotalRows: request.Rows.Count, UpdatedCount: 0, Errors: errors);
+        }
+
+        // Validate domain trên toàn bộ tập SAU khi sửa (thay thế hoàn toàn existing)
+        var projected = updated.Select(u => new Rubric
+        {
+            Id = u.Entity.Id,
+            RubricSetId = rubricSetId,
+            Criterion = u.Row.Criterion,
+            Level = u.Row.Level,
+            MinScore = u.Row.MinScore,
+            MaxScore = u.Row.MaxScore,
+            Weight = u.Row.Weight,
+        }).ToList();
+
+        var domainErrors = RubricSetValidation.Validate(projected).ToList();
+        if (domainErrors.Count > 0)
+        {
+            return new BulkUpdateRubricsResultDto(
+                Success: false, TotalRows: request.Rows.Count, UpdatedCount: 0,
+                Errors: [new BulkRowErrorDto(0, domainErrors)]);
+        }
+
+        await using var tx = await _db.Database.BeginTransactionAsync(ct);
+        foreach (var (entity, row) in updated)
+        {
+            entity.Criterion = row.Criterion;
+            entity.Level = row.Level;
+            entity.MinScore = row.MinScore;
+            entity.MaxScore = row.MaxScore;
+            entity.Description = row.Description;
+            entity.ScoringRule = row.ScoringRule;
+            entity.Weight = row.Weight;
+            entity.UpdatedAt = DateTime.UtcNow;
+        }
+        await _db.SaveChangesAsync(ct);
+        await tx.CommitAsync(ct);
+
+        return new BulkUpdateRubricsResultDto(
+            Success: true, TotalRows: request.Rows.Count, UpdatedCount: updated.Count, Errors: []);
+    }
+
 }

@@ -14,6 +14,7 @@ import { StatusBadge } from "@/components/admin/status-badge";
 import { ConfirmButton } from "@/components/admin/confirm-button";
 import { QUESTION_TYPE_LABEL } from "@/types/question";
 import type { CreateRubricPayload, Rubric, RubricSet } from "@/types/rubric";
+import Link from "next/link";
 
 export default function RubricSetDetailPage() {
   const { rubricSetId } = useParams<{ rubricSetId: string }>();
@@ -118,15 +119,24 @@ export default function RubricSetDetailPage() {
           <h2 className="font-serif text-lg font-medium text-ink">
             Tiêu chí ({rubricSet.rubrics.length})
           </h2>
-          <span
-            className={
-              Math.abs(totalWeight - 1) < 0.001
-                ? "text-[13px] text-success"
-                : "text-[13px] text-gold"
-            }
-          >
-            Tổng trọng số: {totalWeight.toFixed(2)} {Math.abs(totalWeight - 1) >= 0.001 && "(cần = 1.00)"}
-          </span>
+          <div className="flex items-center gap-3">
+            <span
+              className={
+                Math.abs(totalWeight - 1) < 0.001
+                  ? "text-[13px] text-success"
+                  : "text-[13px] text-gold"
+              }
+            >
+              Tổng trọng số: {totalWeight.toFixed(2)} {Math.abs(totalWeight - 1) >= 0.001 && "(cần = 1.00)"}
+            </span>
+            {isDraft && (
+              <Link href={`/admin/rubrics/${rubricSetId}/rubric-sets/import`}>
+                <Button type="button" variant="outline" size="sm">
+                  Nhập từ Excel
+                </Button>
+              </Link>
+            )}
+          </div>
         </div>
 
         {rubricSet.rubrics.length === 0 ? (

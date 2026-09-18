@@ -45,4 +45,15 @@ public interface IRubricService
     Task<RubricDto> UpdateRubricAsync(Guid rubricId, UpdateRubricRequest request, CancellationToken ct);
 
     Task DeleteRubricAsync(Guid rubricId, CancellationToken ct);
+
+
+
+
+    Task<BulkCreateRubricsResultDto> BulkCreateAsync(
+    Guid rubricSetId, BulkCreateRubricsRequestDto request, CancellationToken ct = default);
+
+    Task<List<RubricExportRowDto>> ExportForRubricSetAsync(Guid rubricSetId, CancellationToken ct = default);
+
+    Task<BulkUpdateRubricsResultDto> BulkUpdateAsync(
+        Guid rubricSetId, BulkUpdateRubricsRequestDto request, CancellationToken ct = default);
 }

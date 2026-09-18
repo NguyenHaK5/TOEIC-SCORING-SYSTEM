@@ -1,3 +1,5 @@
+import { BulkRowError } from "./bulk-common";
+
 export interface BulkQuestionOption {
   optionLabel: string;
   optionText: string;
@@ -17,10 +19,10 @@ export interface BulkQuestionRow {
   options: BulkQuestionOption[];
 }
 
-export interface BulkRowError {
-  rowNumber: number;
-  errors: string[];
-}
+// export interface BulkRowError {
+//   rowNumber: number;
+//   errors: string[];
+// }
 
 export interface BulkCreateQuestionsResult {
   success: boolean;

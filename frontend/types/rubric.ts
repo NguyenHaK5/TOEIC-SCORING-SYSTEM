@@ -12,6 +12,9 @@
  * không phải `id` chung chung — cùng lỗi/lý do với `Exam.examId`.
  */
 
+import { BulkRowError } from "./bulk-common";
+
+
 export type RubricSetStatus = "DRAFT" | "ACTIVE" | "ARCHIVED";
 
 export interface Rubric {
@@ -58,3 +61,28 @@ export interface CreateRubricPayload {
 }
 
 export type UpdateRubricPayload = CreateRubricPayload;
+
+export interface RubricExportRow {
+  rubricId: string;
+  criterion: string;
+  level: number;
+  minScore: number;
+  maxScore: number;
+  description?: string;
+  scoringRule?: string;
+  weight: number;
+}
+
+export interface BulkCreateRubricsResult {
+  success: boolean;
+  totalRows: number;
+  createdCount: number;
+  errors: BulkRowError[];
+}
+
+export interface BulkUpdateRubricsResult {
+  success: boolean;
+  totalRows: number;
+  updatedCount: number;
+  errors: BulkRowError[];
+}

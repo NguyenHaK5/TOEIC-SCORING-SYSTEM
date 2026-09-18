@@ -30,4 +30,33 @@ public class RubricsController : ApiControllerBase
         await _rubricService.DeleteRubricAsync(id, ct);
         return NoContent();
     }
+
+
+
+
+    [HttpPost("~/api/v1/rubric-sets/{rubricSetId:guid}/rubrics/bulk")]
+    [Authorize(Roles = "ADMIN")]
+    public async Task<IActionResult> BulkCreate(
+    Guid rubricSetId, [FromBody] BulkCreateRubricsRequestDto request, CancellationToken ct)
+    {
+        var result = await _rubricService.BulkCreateAsync(rubricSetId, request, ct);
+        return result.Success ? Ok(result) : UnprocessableEntity(result);
+    }
+
+    [HttpGet("~/api/v1/rubric-sets/{rubricSetId:guid}/rubrics/export")]
+    [Authorize(Roles = "ADMIN")]
+    public async Task<IActionResult> Export(Guid rubricSetId, CancellationToken ct)
+    {
+        var rows = await _rubricService.ExportForRubricSetAsync(rubricSetId, ct);
+        return Ok(rows);
+    }
+
+    [HttpPut("~/api/v1/rubric-sets/{rubricSetId:guid}/rubrics/bulk")]
+    [Authorize(Roles = "ADMIN")]
+    public async Task<IActionResult> BulkUpdate(
+        Guid rubricSetId, [FromBody] BulkUpdateRubricsRequestDto request, CancellationToken ct)
+    {
+        var result = await _rubricService.BulkUpdateAsync(rubricSetId, request, ct);
+        return result.Success ? Ok(result) : UnprocessableEntity(result);
+    }
 }
